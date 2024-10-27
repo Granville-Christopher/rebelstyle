@@ -23,7 +23,7 @@
                     <% cartItems.forEach(item => { %>
                         <div class="col-md-3">
                           <div class="image-container-cart">
-                            <img class="img-fluid" src="/uploads/<%= item.Image.trim() %>" alt="<%= item.Name %>">
+                            <img class="img-fluid" src="<%= item.Image.trim() %>" alt="<%= item.Name %>">
                             <div class="image-details mt-3">
                               <p class="amount"><b><%= item.Price %></b></p>
                               <b class="cloth-name"><%= item.Name %></b>

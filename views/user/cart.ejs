@@ -107,6 +107,13 @@
                 " readonly>
                 </div>
 
+                <div class="form-group mt-3">
+                    <p>Please Pay The Above Amount To The Account Below And Click On Place Order Button For Your Order To Be Processed. <br><b>Note:</b>Failure To Complete Payment Will Result To Unprocessed Order</p>
+                    <p><b>Bank Name:</b> Opay</p>
+                    <p><b>Account Name:</b> Granville Christopher</p>
+                    <p><b>Account Number:</b> 9133871053</p>
+                </div>
+
                 <textarea style="display: none;" name="" id="cartdetails" class="form-control"></textarea>
 
                 <% if(user != ''){ %>
@@ -144,7 +151,7 @@
             const cartItemHtml = `
                 <div class="col-md-3">
                     <div class="image-container-cart">
-                        <img class="img-fluid" src="/uploads/${item.image}" alt="${item.name}">
+                        <img class="img-fluid" src="${item.image}" alt="${item.name}">
                         <div class="image-details mt-3">
                             <p class="amount"><b>${item.price}</b></p>
                             <b class="cloth-name">${item.name}</b>

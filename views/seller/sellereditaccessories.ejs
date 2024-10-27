@@ -11,7 +11,7 @@
       <div class="row">
         <% accessory.files.forEach(file => { %>
           <div class="col-md-3">
-            <img src="/uploads/<%= file %>" alt="<%= accessory.accessoryname %>" width="100%" height="200" class="product-img mt-1">
+            <img src="<%= file %>" alt="<%= accessory.accessoryname %>" width="100%" height="200" class="product-img mt-1">
           </div>
         <% }) %>
       </div>
