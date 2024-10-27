@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RunwayRebels</title>
+
+    <!-- css linking -->
+    <link rel="stylesheet" href="/boot5/bootstrap-5.3.1/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/small.css">
+    <link rel="stylesheet" href="/css/colle.css">
+    <link rel="stylesheet" href="/css/collesm.css">
+    <link rel="stylesheet" href="/font/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body>
+    <% if (user != ''){ %>
+    <div id="navs" class="navs fixed-top">
+        <div class="container">
+            <nav class="navbar all navbar-expand-lg">
+                <a class="navbar-brand animate__animated animate__zoomInLeft" href="/"><i class="fab fa-shopify "style="font-size: 30px;"></i></a>
+                <a class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </a>
+                <div class="collapse navbar-collapse align-items-center text-start" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center flex-fill animate__animated animate__zoomIn ">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="collection">Collections</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="trends">Trending</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cart"><i class="fas fa-cart-shopping"></i></a>
+                        </li>
+                    </ul>
+                    <div class="eee animate__animated animate__zoomInRight">
+                        <a id="eee" type="button" href="/logout"> Sign out </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <% } else { %>
+
+        <div id="navs" class="navs fixed-top">
+            <div class="container">
+                <nav class="navbar all navbar-expand-lg">
+                    <a class="navbar-brand animate__animated animate__zoomInLeft" href="/"><i class="fab fa-shopify "style="font-size: 30px;"></i></a>
+                    <a class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </a>
+                    <div class="collapse navbar-collapse align-items-center text-start" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center flex-fill animate__animated animate__zoomIn ">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="collection">Collections</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="trends">Trending</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="cart"><i class="fas fa-cart-shopping"></i></a>
+                            </li>
+                        </ul>
+                        <div class="eee animate__animated animate__zoomInRight">
+                            <a id="eee" type="button" href="login"> Sign in </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+    <% } %>

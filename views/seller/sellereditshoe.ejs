@@ -1,0 +1,89 @@
+<%- include("partials/header.ejs") %>
+
+<section class="hero trending-hero">
+    <div class="container">
+        <h1>Edit your Shoe</h1>
+    </div>
+</section>
+
+<div class="tab-container align-items-center">
+    <% if (shoe.files && Array.isArray(shoe.files)) { %>
+      <div class="row">
+        <% shoe.files.forEach(file => { %>
+          <div class="col-md-3">
+            <img src="/uploads/<%= file %>" alt="<%= shoe.shoename %>" width="100%" height="200" class="product-img mt-1">
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <div class="row">
+        <p>no file available...</p>
+      </div>
+    <% } %>
+
+    <div id="tab1" class="tab-content active">
+        <h3>Edit Shoe</h3>
+          
+          <form action="/seller/sellereditshoe" method="POST" class="signup" enctype="multipart/form-data">
+            <%- include("partials/alert.ejs") %>
+          
+            <div class="row p-2">
+              <!-- shoe Name -->
+              <div class="form-group col-md-6 p-2">
+                <input type="text" id="cname" name="shoename" class="form-control" placeholder="shoe Name" value="<%= shoe.shoename %>">
+              </div>
+          
+              <!-- Hidden ID Field -->
+              <div class="form-group">
+                <input type="hidden" name="id" value="<%= shoe._id %>">
+              </div>
+          
+              <!-- Seller Name -->
+              <input type="hidden" name="seller" value="<%= seller.Fname + ' ' + seller.Lname %>">
+          
+              <!-- Category Selection -->
+              <div class="form-group col-md-6 p-2">
+                <select id="Category" name="shoecategory" class="form-control">
+                  <% ["Hoodie", "Pajamas", "Joggers", "Suit", "Polo", "T-shirt", "Short", "Trouser", "Underwear"].forEach(category => { %>
+                    <option value="<%= category %>" <%= shoe.shoecategory === category ? 'selected' : '' %>><%= category %></option>
+                  <% }) %>
+                </select>
+              </div>
+            </div>
+          
+            <div class="row p-2">
+              <!-- Quantity -->
+              <div class="form-group col-md-6 p-2">
+                <input type="text" id="quantity" name="shoequantity" class="form-control" placeholder="Availability" value="<%= shoe.shoequantity %>">
+              </div>
+          
+              <!-- Description -->
+              <div class="form-group col-md-6 p-2">
+                <textarea id="desc" name="desc" class="form-control"><%= shoe.desc %></textarea>
+              </div>
+          
+              <!-- Price -->
+              <div class="form-group col-md-6 p-2">
+                <input type="text" id="price" name="shoeprice" class="form-control" placeholder="Price" value="<%= shoe.shoeprice %>">
+              </div>
+          
+              <!-- Brand -->
+              <div class="form-group col-md-6 p-2">
+                <input type="text" id="Brand" name="brand" class="form-control" placeholder="Brand" value="<%= shoe.brand %>">
+              </div>
+          
+              <!-- Image Upload -->
+              <div class="form-group col-md-6 p-2">
+                <input type="file" id="img" name="images" class="form-control" multiple>
+              </div>
+            </div>
+          
+            <div class="p-1">
+              <button class="sellerbtn btn" type="submit">Upload</button>
+            </div>
+          </form>
+          
+    </div>
+</div>
+
+<%- include("partials/footer.ejs") %>

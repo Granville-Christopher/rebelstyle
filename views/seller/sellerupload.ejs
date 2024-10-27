@@ -1,0 +1,202 @@
+<%- include("partials/header.ejs") %>
+
+
+    <section class="hero trending-hero">
+        <div class="container">
+
+            <h1>Upload your products here</h1>
+            <p>Curated Styles That Define Today's Fashion Scene</p>
+
+        </div>
+    </section>
+
+    <div class="tab-container align-items-center">
+        <div class=" justify-content-center flex-fill">
+            <button class="tab-button active mb-2" onclick="openTab(event, 'tab1')">Upload Clothes</button>
+            <button class="tab-button m-2" onclick="openTab(event, 'tab2')">Upload Footwears</button>
+            <button class="tab-button" onclick="openTab(event, 'tab3')">Upload Accessories</button>
+        </div>
+        <div id="tab1" class="tab-content active">
+            <h3>Upload Clothes</h3>
+            <form action="/seller/uploadcloth" method="POST" class="signup" enctype="multipart/form-data">
+                <%- include("partials/alert.ejs") %>
+                    <div class="row p-2">
+                        <div class="form-group col-md-6 p-2">
+                            <input type="text" id="cname" name="clothname" class="form-control"
+                                placeholder="Cloth Name">
+                        </div>
+
+                        <input type="hidden" name="seller" value="<%= seller.Fname + ' ' + seller.Lname %>">
+
+                        <div class="form-group col-md-6 p-2">
+                            <select id="Category" name="clothcategory" class="form-control">
+                                <option value="Hoodie">Hoodie</option>
+                                <option value="Pajamas">Pajamas</option>
+                                <option value="Joggers">Joggers</option>
+                                <option value="Suit">Suit</option>
+                                <option value="Polo">Polo</option>
+                                <option value="T-shirt">T-shirt</option>
+                                <option value="Short">Short</option>
+                                <option value="Trouser">Trouser</option>
+                                <option value="Underwear">Underwear</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class=" row p-2">
+                        <div class="form-group p-2">
+                            <input type="text" id="quantity" name="clothquantity" class="form-control"
+                                placeholder="availability">
+                        </div>
+
+                        <div class="form-group p-2">
+                            <textarea name="desc" id="desc" class="form-control" id="" placeholder="description"></textarea>
+                        </div>
+                        
+                        <div class="form-group p-2">
+                            <input type="text" id="price" name="clothprice" class="form-control" placeholder="price" value="$">
+                        </div>
+
+                        <div class="form-group p-2">
+                            <input type="text" id="Brand" name="brand" class="form-control"
+                                placeholder="Brand">
+                        </div>
+
+                        <div class="form-group p-2">
+                            <input type="file" id="img" name="images" class="form-control" placeholder="Cloth Image"
+                                multiple>
+                        </div>
+
+                    </div>
+
+                    <div class="p-1">
+                        <button class=" sellerbtn btn" type="submit">Upload</button>
+                    </div>
+            </form>
+
+
+        </div>
+        <div id="tab2" class="tab-content">
+            <h3>upload footwears</h3>
+            <form action="/seller/uploadshoe" method="post" enctype="multipart/form-data" class="signup">
+                <div class="row p-2">
+                    <div class="form-group col-md-6 p-2">
+                        <input type="text" id="sname" name="shoename" class="form-control" placeholder="footwear Name">
+                    </div>
+
+                    <input type="hidden" name="seller" value="<%= seller.Fname + ' ' + seller.Lname %>">
+
+                    <div class="form-group col-md-6 p-2">
+
+                        <select name="shoecategory" id="SCategory" class="form-control">
+                            <option value="Sneaker">Sneaker</option>
+                            <option value="Shoe">Shoe</option>
+                            <option value="Canvas">Canvas</option>
+                            <option value="Slippers">Slippers</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class=" row p-2">
+                    <div class="form-group p-2">
+                        <input type="text" id="Squantity" name="shoequantity" class="form-control"
+                            placeholder="availability">
+                    </div>
+
+                    <div class="form-group p-2">
+                        <textarea name="desc" id="desc" class="form-control" id="" placeholder="description"></textarea>
+                    </div>
+
+                    <div class="form-group p-2">
+                        <input type="text" id="Shoeprice" name="shoeprice" class="form-control"
+                            placeholder="Shoe price" value="$">
+                    </div>
+
+                    <div class="form-group p-2">
+                        <input type="text" id="Brand" name="brand" class="form-control"
+                            placeholder="Brand">
+                    </div>
+
+                    <div class="form-group p-2">
+                        <input type="file" id="Simg" name="images" class="form-control" placeholder="Shoe Image"
+                            multiple>
+                    </div>
+
+                </div>
+
+                <div class="p-1">
+                    <button class=" sellerbtn btn" type="submit">Upload</button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+        <div id="tab3" class="tab-content">
+            <h3>upload Accessories</h3>
+            <form action="/seller/uploadaccessory" method="POST" enctype="multipart/form-data" class="signup">
+                <div class="row p-2">
+                    <div class="form-group col-md-6 p-2">
+                        <input type="text" id="Aname" name="accessoryname" class="form-control"
+                            placeholder="Accessory Name">
+                    </div>
+
+                    <input type="hidden" name="seller" value="<%= seller.Fname + ' ' + seller.Lname %>">
+
+                    <div class="form-group col-md-6 p-2">
+                        <select id="ACategory" name="accessorycategory" class="form-control">
+                            <option value="Belt">Belt</option>
+                            <option value="Suitcase">Suitcase</option>
+                            <option value="Earing">Earing</option>
+                            <option value="School Bag">School Bag</option>
+                            <option value="Hand Bag">Hand Bag</option>
+                            <option value="Necklace">Necklace</option>
+                            <option value="Ring">Ring</option>
+                            <option value="Wrist Band">Wrist Band</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class=" row p-2">
+                    <div class="form-group p-2">
+                        <input type="text" id="Aquantity" name="accessoryquantity" class="form-control"
+                            placeholder="availability">
+                    </div>
+
+                    <div class="form-group p-2">
+                        <textarea name="desc" id="desc" class="form-control" id="" placeholder="description"></textarea>
+                    </div>
+                    
+                    <div class="form-group p-2">
+                        <input type="text" id="Aprice" name="accessoryprice" class="form-control"
+                            placeholder="Accessory price" value="$">
+                    </div>
+
+                    <div class="form-group p-2">
+                        <input type="text" id="Brand" name="brand" class="form-control"
+                            placeholder="Brand">
+                    </div>
+
+                    <div class="form-group p-2">
+                        <input type="file" id="Aimg" name="images" class="form-control" placeholder="Accessory Image"
+                            multiple>
+                    </div>
+
+                </div>
+
+                <div class="p-1">
+                    <button class=" sellerbtn btn" type="submit">Upload</button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <%- include("partials/footer.ejs") %>

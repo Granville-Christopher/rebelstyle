@@ -1,0 +1,95 @@
+
+<footer class="footer mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <h6>About Us</h6>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-3 part">
+                <h6>Follow Us</h6>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-6 col-md-3 part">
+                <h6>Partners</h6>
+                <div class="row justify-content-center align-items-center g-2">
+                    <div class="colw col-md-4 col-4">Column</div>
+                    <div class="colw col-md-4 col-4">Column</div>
+                    <div class="colw col-md-4 col-4">Column</div>
+                    <div class="colw col-md-4 col-4">Column</div>
+                    <div class="colw col-md-4 col-4">Column</div>
+                </div>
+            </div>
+            <div class="col-sm-6 mt-2 mb-5 col-md-3 part">
+                <h6>Subscribe to Our Newsletter</h6>
+                <form>
+                    <input type="email" placeholder="Email Address">
+                    <button type="submit" class="mt-none mt-md-2">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Copyright © 2023 www.runwayrebels.com. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="/boot5/bootstrap-5.3.1/js/bootstrap.js"></script>
+<script src="/js/all.js"></script>
+<script src="/font/js/all.js"></script>
+<script src="/js/index.js"></script>
+</body>
+<script>
+    function showNotification(message) {
+        // Create a new div element for the notification
+        const notification = document.createElement('div');
+        notification.className = 'notification-popup';
+        notification.innerText = message;
+
+        // Append the notification to the body
+        document.body.appendChild(notification);
+
+        // Set a timeout to remove the notification after 3 seconds
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+
+    function addToCart(id, name, price, image, seller) {
+        // Get the current cart from sessionStorage or initialize it
+        let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+        
+        // Check if the item is already in the cart
+        const existingItemIndex = cart.findIndex(item => item.id === id);
+        
+        if (existingItemIndex !== -1) {
+            // If item exists, increase the quantity
+            cart[existingItemIndex].quantity += 1;
+        } else {
+            // If item doesn't exist, add it with initial quantity of 1
+            cart.push({
+                id: id,
+                name: name,
+                price: price,
+                image: image,
+                quantity: 1,
+                seller: seller
+            });
+        }
+        
+        // Save the updated cart back to sessionStorage
+        sessionStorage.setItem('cart', JSON.stringify(cart));
+        
+        // Optionally, show a message to the user
+        showNotification('Item added to cart');
+    }
+    </script>
+</html>

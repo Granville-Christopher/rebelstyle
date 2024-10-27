@@ -1,0 +1,13 @@
+<div class="row text-center">
+    <% if (flag === 1){ %>
+        <div class="alert alert-danger alert-dismissible">
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+            <p><%= message %></p>
+        </div>
+        <% } if (flag === 0){ %>
+            <div class="alert alert-success alert-dismissible">
+                <button class="btn-close" data-bs-dismiss="alert"></button>
+                <p><%= message %></p>
+            </div>
+        <% } %>
+</div>

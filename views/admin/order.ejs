@@ -1,0 +1,62 @@
+<%- include("partials/header.ejs") %>
+
+
+    <section class="hero collections-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">User Order</li>
+                </ol>
+            </nav>
+            <h1>View User Order</h1>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row text-center mt-2">
+            <h4>Customer Order</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row mt-5 d-none d-md-flex">
+                    
+                    <% cartItems.forEach(item => { %>
+                        <div class="col-md-3">
+                          <div class="image-container-cart">
+                            <img class="img-fluid" src="/uploads/<%= item.Image.trim() %>" alt="<%= item.Name %>">
+                            <div class="image-details mt-3">
+                              <p class="amount"><b><%= item.Price %></b></p>
+                              <b class="cloth-name"><%= item.Name %></b>
+                              <p class="quantity">quantity: <%= item.Quantity.trim() %></p>
+                              <p class="quantity">seller: <%= item.Seller %></p>
+                            </div>
+                          </div>
+                        </div>
+                    <% }) %>
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <p><b>Order Reference:</b> <%= order.reference %></p>
+                <p><b>First Name:</b> <%= order.fName %></p>
+                <p><b>Last Name:</b> <%= order.lName %></p>
+                <p><b>First Name:</b> <%= order.fName %></p>
+                <p><b>Email:</b> <%= order.email %></p>
+                <p><b>Phone Number:</b> <%= order.phone %></p>
+                <p><b>State:</b> <%= order.state %></p>
+                <p><b>Zip Code:</b> <%= order.zip %></p>
+                <p><b>City:</b> <%= order.city %></p>
+                <p><b>Contact Address:</b> <br><%= order.address %></p>
+                <p><b>Amount Paid:</b> <span class="text-success">$<%= order.cartamount %></span></p>
+                <p><b>Mark / Unmark order as Completed <br>
+                    <% if (order.status == false){ %>                    
+                        <a href="/admin/updateOrder/<%= order._id %>" class="btn btn-success">Mark Order</a>
+                    <% } else { %>
+                        <a href="/admin/updateOrder2/<%= order._id %>" class="btn btn-danger">Unmark Order</a>
+                    <% } %>
+                </p><br>
+            </div>
+        </div>
+    </div>
+
+<%- include("partials/footer.ejs") %>

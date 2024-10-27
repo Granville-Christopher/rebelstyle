@@ -1,0 +1,246 @@
+<%- include("partials/header.ejs") %>
+
+    <!-- <section class="hero trending-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                </ol>
+            </nav>
+            <h1 class="animate__animated animate__pulse animate__slow">Your Cart Awaits!</h1>
+            <p>You're just a few steps away from owning the latest in fashion. Review your selections and proceed to
+                checkout for a seamless shopping experience. Need more? Continue shopping to add the hottest trends to
+                your wardrobe.</p>
+            <a class="btn btn-outline-white  animate__animated animate__fadeInUp animate__slow" href="collection.html">Continue Shopping</a>
+        </div>
+    </section> -->
+
+    <div class="tab-container align-items-center container mt-5">
+        <div class="tab-header justify-content-center flex-fill">
+            <button class="tab-button active" onclick="openTab(event, 'tab1')"><b>Cart</b></button>
+            <button id="open-sidebar" onclick="toggleSidebar()">Checkout</button>
+        </div>
+        <div id="tab1" class="tab-content active ">
+
+            <div class="row mt-5 d-none d-md-flex" id="cartItemsContainer"></div>
+
+
+
+            <!-- small screen -->
+            <div class="row mt-3 d-flex d-md-none" id="cartItemsContainer2"></div>
+            <!-- end -->
+        </div>
+
+        <div id="sidebar" class="sidebar mt-4">
+            <p class="close" onclick="toggleSidebar()">&times;</p>
+
+            <h2>Checkout Page</h2>
+            <p>log into account to complete purchase</p>
+            <div class="form">
+                <div class="form-group mt-3">
+                    <input type="text" id="cartamount" name="amount" class="form-control"
+                        placeholder="Total amount to be paid"  readonly>
+                </div>
+
+                <div class="form-group mt-3">
+                    <input type="text" id="Fname" name="Fname" class="form-control" placeholder="First Name" value="
+                    <% if(user != ''){ %>
+                        <%= user.Fname %>
+                    <% } %>
+                " readonly>
+                </div>
+
+                <div class="form-group mt-3">
+                    <input type="text" id="Lname" name="Lname" class="form-control" placeholder="Last Name" value="
+                    <% if(user != ''){ %>
+                        <%= user.Lname %>
+                    <% } %>
+                " readonly>
+                </div>
+
+                <div class="form-group mt-3">
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="
+                    <% if(user != ''){ %>
+                        <%= user.email %>
+                    <% } %>
+                " readonly>
+                </div>
+
+                <div class="form-group mt-3">
+                    <input type="text" id="address" name="address" class="form-control" placeholder="Address" value="
+                    <% if(user != ''){ %>
+                        <%= user.address %>
+                    <% } %>
+                " readonly>
+                </div>
+
+                <div class="form-group mt-3">
+                    <input type="text" id="city" name="city" class="form-control" placeholder="City" value="
+                    <% if(user != ''){ %>
+                        <%= user.city %>
+                    <% } %>
+                " readonly>
+                </div>
+
+                <div class="form-group mt-3">
+                    <input type="text" id="state" name="state" class="form-control" placeholder="State" value="
+                    <% if(user != ''){ %>
+                        <%= user.state %>
+                    <% } %>
+                " readonly>
+                </div>
+
+                <div class="form-group mt-3">
+                    <input type="text" id="zip" name="zip" class="form-control" placeholder="Zip code" value="
+                    <% if(user != ''){ %>
+                        <%= user.zip %>
+                    <% } %>
+                " readonly>
+                </div>
+
+                <div class="form-group mt-3">
+                    <input type="tel" id="phone" name="phone" class="form-control" placeholder="Phone number" value="
+                    <% if(user != ''){ %>
+                        <%= user.phone %>
+                    <% } %>
+                " readonly>
+                </div>
+
+                <textarea style="display: none;" name="" id="cartdetails" class="form-control"></textarea>
+
+                <% if(user != ''){ %>
+                    <button class="mt-2 iiiiii btn" type="submit" onclick="submitOrder()">Place Order</button>
+                <% }else{ %>
+                    <a href="/login" class="mt-2 iiiiii btn" type="submit">Login Now</a>
+
+                <% } %>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+<%- include("partials/footer.ejs") %>
+<script>
+    function loadCartItems() {
+        // Get the cart items from sessionStorage
+        const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+        
+        // Select the container where items will be displayed
+        const container = document.getElementById('cartItemsContainer');
+        const container2 = document.getElementById('cartItemsContainer2');
+
+        container.innerHTML = ''; // Clear previous items
+        container2.innerHTML = ''; // Clear previous items
+
+        // Array to store each cart item as a string for the textarea
+        const cartDetailsText = [];
+        
+        // Loop through each item in the cart and display it
+        cart.forEach(item => {
+            const cartItemHtml = `
+                <div class="col-md-3">
+                    <div class="image-container-cart">
+                        <img class="img-fluid" src="/uploads/${item.image}" alt="${item.name}">
+                        <div class="image-details mt-3">
+                            <p class="amount"><b>${item.price}</b></p>
+                            <b class="cloth-name">${item.name}</b>
+                            <p class="quantity">quantity: ${item.quantity}</p>
+                        </div>
+                        <div class="buttons-for-item">
+                            <button type="button" class="btn btn-outline-white" onclick="removeFromCart('${item.id}')">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Append the item HTML to the container
+            container.innerHTML += cartItemHtml;
+            container2.innerHTML += cartItemHtml;
+
+            cartDetailsText.push(`{Id: ${item.id}, Name: ${item.name}, Price: ${item.price}, Quantity: ${item.quantity}, Seller: ${item.seller}, Image: ${item.image}},`);
+        });
+
+        document.getElementById('cartdetails').value = cartDetailsText.join('\n');
+    }
+    
+    // Function to remove an item from the cart
+    function removeFromCart(id) {
+        let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+        
+        // Filter out the item with the specified id
+        cart = cart.filter(item => item.id !== id);
+        
+        // Save the updated cart back to sessionStorage
+        sessionStorage.setItem('cart', JSON.stringify(cart));
+        
+        // get total
+        calculateCartTotal()
+        // Reload the cart items
+        loadCartItems();
+    }
+
+    function calculateCartTotal() {
+    // Retrieve the cart from sessionStorage
+        const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+
+        let total = cart.reduce((sum, item) => {
+            const numericPrice = parseFloat(item.price.replace('$', '').replace(/,/g, '')); // Remove $ and commas
+            return sum + (numericPrice * item.quantity);
+        }, 0);
+
+        // Display the total in the input field with id "cartTotal"
+        document.getElementById('cartamount').value = total.toFixed(2);
+    }
+
+    function submitOrder(){
+        let formData = new FormData();
+
+        formData.append('fName', document.getElementById('Fname').value.trim());
+        formData.append('lName', document.getElementById('Lname').value.trim());
+        formData.append('email', document.getElementById('email').value.trim());
+        formData.append('address', document.getElementById('address').value.trim());
+        formData.append('city', document.getElementById('city').value.trim());
+        formData.append('zip', document.getElementById('zip').value.trim());
+        formData.append('state', document.getElementById('state').value.trim());
+        formData.append('phone', document.getElementById('phone').value.trim());
+        formData.append('cartamount', document.getElementById('cartamount').value.trim());
+        formData.append('cartdetails', document.getElementById('cartdetails').value.trim());
+        formData.append('reference', `Ref-${Date.now()}`);
+
+        const endpoint = `/submitorder`;
+
+        fetch(endpoint, {
+            method: 'POST',
+            body: formData // Corrected from `data` to `body`
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+                showNotification('error processing request');
+            }
+            return response.json();
+        })
+        .then((data) => {
+            if (data.msg === 'order created') {
+                sessionStorage.setItem('cart', JSON.stringify([]));
+                showNotification(data.msg);
+                calculateCartTotal()
+                loadCartItems();
+            } else {
+                showNotification(data.msg);
+            }
+        })
+        .catch((err) => console.error('Fetch error:', err));
+    }
+
+
+    // Call this function when the page loads to display the initial total
+    document.addEventListener('DOMContentLoaded', calculateCartTotal);
+    
+    // Load the cart items on page load
+    loadCartItems();
+</script>

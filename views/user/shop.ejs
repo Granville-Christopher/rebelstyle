@@ -1,0 +1,681 @@
+<%- include("partials/header.ejs") %>
+
+    <!-- end of navbar -->
+
+    <section class="hero login-hero">
+        <div class="container">
+            
+            <h1>Seller Name</h1>
+            
+           
+        </div>
+    </section>
+
+    <div class="container text-center mt-3 seller-details">
+        <div class="row"> 
+            <div class="col-md-4">Seller email</div>
+            <div class="col-md-4">Seller Phone number</div>
+            <div class="col-md-4">Seller Address</div>
+        </div>
+        <h3>seller name's Products</h3>
+        <div class="tab-container align-items-center">
+            <div class="tab-header justify-content-center flex-fill">
+                <button class="tab-button active" onclick="openTab(event, 'tab1')">Clothes</button>
+                <button class="tab-button" onclick="openTab(event, 'tab2')">Footwears</button>
+                <button class="tab-button" onclick="openTab(event, 'tab3')">Accessories</button>
+            </div>
+            <div id="tab1" class="tab-content active">
+                <div class="row mt-5 d-none d-md-flex">
+                    <div class="col-md-3 mb-2">
+                        <div class="image-container">
+                            <img class="img-fluid" src="/img/pexels-chloekalaartist-1043473.jpg" alt="">
+                            <div class="image-overlay">
+                                <div class="image-details">
+                                    <p class="row">
+                                        <b class="price col-4">$49.99</b>
+                                        <b class="cloth-name col-6">Summer Dressing</b>
+                                        <a href="" class="seller col-2">john</a>
+                                    </p>
+                                    <p class="category">Women's Fashion</p>
+                                    <p class="qttb">
+                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- small screen -->
+                <div class="row mt-3 d-flex d-md-none">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-gabby-k-6311719.jpg" class="img-fluid" alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item ">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3 d-flex d-md-none">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item ">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end -->
+            </div>
+            <div id="tab2" class="tab-content">
+    
+                <div class="row mt-5 d-none d-md-flex">
+    
+                    <div class="col-md-3  mb-2">
+                        <div class="image-container">
+                            <img class="img-fluid" src="/img/pexels-mattycphoto-1248473.jpg" alt="">
+                            <div class="image-overlay">
+                                <div class="image-details">
+                                    <p class="row">
+                                        <b class="price col-4">$49.99</b>
+                                        <b class="cloth-name col-6">Summer Dressing</b>
+                                        <a href="" class="seller col-2">john</a>
+                                    </p>
+                                    <p class="category">Women's Fashion</p>
+                                    <p class="qttb">
+                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+    
+                </div>
+    
+                <!-- small screen -->
+                <div class="row mt-3 d-flex d-md-none">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-olly-3782798.jpg" class="img-fluid" alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item ">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3 d-flex d-md-none">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-mattycphoto-1248473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item ">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- small screen end -->
+    
+            </div>
+            <div id="tab3" class="tab-content">
+    
+                <div class="row mt-5 d-none d-md-flex">
+    
+                    <div class="col-md-3  mb-2">
+                        <div class="image-container">
+                            <img class="img-fluid" src="/img/pexels-chloekalaartist-1043473.jpg" alt="">
+                            <div class="image-overlay">
+                                <div class="image-details">
+                                    <p class="row">
+                                        <b class="price col-4">$49.99</b>
+                                        <b class="cloth-name col-6">Summer Dressing</b>
+                                        <a href="" class="seller col-2">john</a>
+                                    </p>
+                                    <p class="category">Women's Fashion</p>
+                                    <p class="qttb">
+                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+    
+    
+                <!-- small screen -->
+    
+                <!-- small screen -->
+                <div class="row mt-3 d-flex d-md-none">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-goodcitizen-2072453.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item ">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3 d-flex d-md-none">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-gabby-k-6311693.jpg" class="img-fluid" alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item ">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-chloekalaartist-1043473.jpg" class="img-fluid"
+                                                alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <img src="/img/pexels-gabby-k-6310924.jpg" class="img-fluid" alt="...">
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price">$49.99</b>
+                                                        <a href="" class="seller">john</a>
+                                                    </p>
+                                                    <b class="cloth-name">Summer Dress</b>
+                                                    <p class="category">Women's Fashion</p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                        <a class="add"><i class="fas fa-cart-shopping"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end -->
+            </div>
+        </div>
+    </div>
+
+
+<%- include("partials/footer.ejs") %>

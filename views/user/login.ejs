@@ -1,0 +1,115 @@
+<%- include("partials/header.ejs") %>
+
+
+
+
+    <section class="hero login-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Collections</li>
+                </ol>
+            </nav>
+            <h1>WELCOME</h1>
+            <p>login to purchase the best outfit for your occasion</p>
+            <button class="btn btn-outline-white">Get in</button>
+        </div>
+    </section>
+
+    <div class="tab-container container logup align-items-center">
+        <div class="tab-header justify-content-center flex-fill">
+            <button class="tab-button active" onclick="openTab(event, 'tab1')">Sign In</button>
+            <button class="tab-button" onclick="openTab(event, 'tab2')">Sign up</button>
+        </div>
+
+        <div id="tab1" class="tab-content active mt-3">
+
+
+            <form action="/login" class=" login" method="POST">
+                <%- include("partials/alert.ejs") %>
+                <div class="">
+                    <div class="form-group p-2">
+                        <input type="email" id="email" name="email" class="form-control" placeholder="your email here">
+                    </div>
+
+                    <div class="form-group p-2">
+                        <input type="password" id="password" name="password" class="form-control"
+                            placeholder="password">
+                    </div>
+                    <div class=" p-2">
+                        <button class=" iiiiii btn" type="submit">sign in</button>
+
+                    </div>
+
+                </div>
+            </form>
+
+
+
+
+        </div>
+
+        <div id="tab2" class="tab-content mt-3">
+
+
+            <form action="/register" class="signup" method="POST">
+
+                <div class="row p-2">
+                    <div class="form-group col-md-6 p-2">
+                        <input type="text" id="Fname" name="Fname" class="form-control" placeholder="First Name">
+                    </div>
+
+                    <div class="form-group col-md-6 p-2">
+                        <input type="text" id="Lname" name="Lname" class="form-control" placeholder="Last Name">
+                    </div>
+                </div>
+
+                <div class=" row p-2">
+                    <div class="form-group p-2">
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email">
+                    </div>
+
+                    <div class="form-group p-2">
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="Phone number">
+                    </div>
+
+                    <div class="form-group p-2">
+                        <input type="text" id="address" name="address" class="form-control" placeholder="Address">
+                    </div>
+
+                </div>
+
+                <div class="row p-2">
+                    <div class="form-group p-2 col-md-4">
+                        <input type="text" id="city" name="city" class="form-control" placeholder="City">
+                    </div>
+
+                    <div class="form-group p-2 col-md-4">
+                        <input type="text" id="state" name="state" class="form-control" placeholder="State">
+                    </div>
+
+                    <div class="form-group p-2 col-md-4">
+                        <input type="text" id="zip" name="zip" class="form-control" placeholder="Zip code">
+                    </div>
+
+                </div>
+                <div class="row p-2">
+                    <div class="form-group p-2 ">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="password">
+                    </div>
+                </div>
+
+                <!-- <div class="p-1"> -->
+                    <button class=" iiiiii btn" type="submit" >sign up</button>
+                <!-- </div> -->
+
+
+            </form>
+
+        </div>
+    </div>
+
+
+
+<%- include("partials/footer.ejs") %>

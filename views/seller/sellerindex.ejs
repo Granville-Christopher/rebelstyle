@@ -1,0 +1,481 @@
+<%- include("partials/header.ejs") %>
+
+
+    <section class="hero collections-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Uploads</li>
+                </ol>
+            </nav>
+            <h1>View and Edit Your Products Here</h1>
+        </div>
+    </section>
+    <style>
+        .seller{
+            margin-top: 100px;
+            padding: 2px;
+            width: 50%;
+        }
+    </style>
+    <div class="tab-container align-items-center">
+        <div class="tab-header justify-content-center flex-fill">
+            <button class="tab-button active" onclick="openTab(event, 'tab1')">Clothes</button>
+            <button class="tab-button" onclick="openTab(event, 'tab2')">Footwears</button>
+            <button class="tab-button" onclick="openTab(event, 'tab3')">Accessories</button>
+        </div>
+        <div id="tab1" class="tab-content active">
+            <div class="row mt-5 d-none d-md-flex">
+                <% if (Clothes.length> 0) { %>
+                    <div class="container position-relative">
+                        <div id="autoSlider0" class="row flex-nowrap overflow-auto">
+                            <% Clothes.forEach((cloth, clothindex)=> { %>
+                                <div class="col-md-3 mb-2">
+                                    <div class="image-container">
+                                       <img class="img-fluid" src="/uploads/<%= cloth.files[0] %>" alt="<%= cloth.clothname %>">
+                                        <div class="image-overlay">
+                                            <a href="" class="seller col-2"><%= cloth.seller %></a>
+        
+                                            <div class="image-details">
+                                                <p class="row">
+                                                    <b class="price col-4"><%= cloth.clothprice %></b>
+                                                    <b class="cloth-name col-6"><%= cloth.clothname %></b>
+                                                </p>
+                                                <p class="category"><%= cloth.clothcategory %></p>
+                                                <p class="qttb">
+                                                    <b class="quantity"><%= cloth.clothquantity %></b>
+                                                    <a href=" /seller/getselleredit/<%=  cloth._id %>"class=" btn-primary btn text-light">Edit</a>
+                                                    <a href="/seller/deleteproduct/<%= cloth._id %>?type=cloth" class="btn bg-danger text-light">Delete</a>
+
+                                                    <% if (cloth.trending == false) { %>
+                                                        <a href="/seller/trendproduct/<%= cloth._id %>?type=cloth&action=trend" class="btn bg-warning text-light">Trend</a>
+                                                    <% } else { %>    
+                                                        <a href="/seller/trendproduct/<%= cloth._id %>?type=cloth&action=untrend" class="btn bg-success text-dark">Untrend</a>
+                                                    <% } %>    
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>                    
+                <% } else { %>
+                    <p> <center>no products uploaded</center> </p>
+                <% } %>
+
+
+                <!-- <% if (Clothes.length> 0) { %>
+                    <div class="container position-relative">
+                        <div id="autoSlider11" class="row flex-nowrap overflow-auto">
+                            <% Clothes.forEach((cloth, clothindex)=> { %>
+                                <div class="col-md-3 mb-2">
+                                    <div class="image-container">
+                                       <a href="selleredit"> <img class="img-fluid" src="/uploads/<%= cloth.files[0] %>" alt="<%= cloth.clothname %>"></a>
+                                        <div class="image-overlay">
+                                            <a href="" class="seller col-2"><%= cloth.seller %></a>
+        
+                                            <div class="image-details">
+                                                <p class="row">
+                                                    <b class="price col-4"><%= cloth.clothprice %></b>
+                                                    <b class="cloth-name col-6"><%= cloth.clothname %></b>
+                                                </p>
+                                                <p class="category"><%= cloth.clothcategory %></p>
+                                                <p class="qttb">
+                                                    <b class="quantity"><%= cloth.clothquantity %></b>
+                                                    <a href=" /seller/getselleredit/<%=  cloth._id %> "class=" btn-primary btn text-light">Edit</a>
+                                                    <a href="/seller/deleteproduct/<%=  cloth._id %> " class="btn bg-danger text-light">Delete</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>                    
+                <% } else { %>
+                    <p> <center>no products uploaded</center> </p>
+                <% } %> -->
+            </div>
+
+            <!-- small screen -->
+            <% if (Clothes.length> 0) { %>
+                <div class="row mt-3 d-flex d-md-none">
+                    <div class="container position-relative">
+                        <div id="autoSlider1" class="row flex-nowrap overflow-auto">
+                            <% Clothes.forEach((cloth, clothindex) => { %>
+                                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                                    <div class="image-container">
+                                        <a href="selleredit"> <img class="img-fluid" src="/uploads/<%= cloth.files[0] %>" alt="<%= cloth.clothname %>"></a>
+                                        <div class="image-overlay">
+                                            <div class="image-details">
+                                                <p>
+                                                    <b class="price"><%= cloth.clothprice %></b>
+                                                    <a href="" class="seller"><%= cloth.seller %></a>
+                                                </p>
+                                                <b class="cloth-name"><%= cloth.clothname %></b>
+                                                <p class="category"><%= cloth.category %></p>
+                                                <p class="qttb">
+                                                    <b class="quantity"><%= cloth.clothquantity %></b>
+                                                    <a href=" /seller/getselleredit/<%=  cloth._id %> "class=" btn-primary btn text-light">Edit</a>
+                                                    <a href="/seller/deleteproduct/<%= cloth._id %>?type=cloth" class="btn bg-danger text-light">Delete</a>
+
+                                                    <% if (cloth.trending == false) { %>
+                                                        <a href="/seller/trendproduct/<%= cloth._id %>?type=cloth&action=trend" class="btn bg-warning text-light">Trend</a>
+                                                    <% } else { %>    
+                                                        <a href="/seller/trendproduct/<%= cloth._id %>?type=cloth&action=untrend" class="btn bg-success text-dark">Untrend</a>
+                                                    <% } %>  
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- <div class="row mt-3 d-flex d-md-none">
+                    <div class="container position-relative">
+                        <div id="autoSlider2" class="row flex-nowrap overflow-auto">
+                            <% Clothes.forEach((cloth, clothindex) => { %>
+                                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                                    <div class="image-container">
+                                        <a href="selleredit"><img class="img-fluid" src="/uploads/<%= cloth.files[0] %>" alt="<%= cloth.clothname %>"></a>
+                                        <div class="image-overlay">
+                                            <div class="image-details">
+                                                <p>
+                                                    <b class="price"><%= cloth.clothprice %></b>
+                                                    <a href="" class="seller"><%= cloth.seller %></a>
+                                                </p>
+                                                <b class="cloth-name"><%= cloth.clothname %></b>
+                                                <p class="category"><%= cloth.category %></p>
+                                                <p class="qttb">
+                                                    <b class="quantity"><%= cloth.clothquantity %></b>
+                                                    <a href=" /seller/getselleredit/<%=  cloth._id %> "class=" btn-primary btn text-light">Edit</a>
+                                                    <a href="/seller/deleteproduct/<%=  cloth._id %> " class="btn bg-danger text-light">Delete</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div> -->
+                
+            <% } else { %>
+                <p> <center>no Clothes uploaded</center> </p>
+            <% } %>
+            <!-- end -->
+        </div>
+        <div id="tab2" class="tab-content">
+            <div class="row mt-5 d-none d-md-flex">
+                <% if(Shoes.length > 0 ) { %>
+                    <div class="container position-relative">
+                        <div id="autoSlider7" class="row flex-nowrap overflow-auto">
+                            <% Shoes.forEach((shoe, shoeindex)=> { %>
+                                <div class="col-md-3 mb-2">
+                                    <div class="image-container">
+                                       <a href="selleredit"> <img class="img-fluid" src="/uploads/<%= shoe.files[0] %>" alt="<%= shoe.shoename %>"></a>
+                                        <div class="image-overlay">
+                                            <a href="" class="seller col-2"><%= shoe.seller %></a>
+                                        
+                                            <div class="image-details">
+                                                <p class="row">
+                                                    <b class="price col-4"><%= shoe.shoeprice %></b>
+                                                    <b class="cloth-name col-6"><%= shoe.shoename %></b>
+                                                </p>
+                                                <p class="category"><%= shoe.shoecategory %></p>
+                                                <p class="qttb">
+                                                    <b class="quantity"><%= shoe.shoequantity %></b>
+                                                    <a href=" /seller/getsellereditshoe/<%=  shoe._id %> "class=" btn-primary btn text-light">Edit</a>
+                                                    <a href="/seller/deleteproduct/<%= shoe._id %>?type=shoe" class="btn bg-danger text-light">Delete</a>
+
+                                                    <% if (shoe.trending == false) { %>
+                                                        <a href="/seller/trendproduct/<%= shoe._id %>?type=shoe&action=trend" class="btn bg-warning text-light">Trend</a>
+                                                    <% } else { %>    
+                                                        <a href="/seller/trendproduct/<%= shoe._id %>?type=shoe&action=untrend" class="btn bg-success text-dark">Untrend</a>
+                                                    <% } %>  
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div> 
+                <% } else { %> 
+                    <p><center>No shoes uploaded</center></p>
+                <% } %>
+
+                <!-- <% if(Shoes.length > 0 ) { %>
+                    <div class="container position-relative">
+                        <div id="autoSlider7" class="row flex-nowrap overflow-auto">
+                            <% Shoes.forEach((shoe, shoeindex)=> { %>
+                                <div class="col-md-3 mb-2">
+                                    <div class="image-container">
+                                       <a href="selleredit"> <img class="img-fluid" src="/uploads/<%= shoe.files[0] %>" alt="<%= shoe.shoename %>"></a>
+                                        <div class="image-overlay">
+                                            <a href="" class="seller col-2"><%= shoe.seller %></a>
+                                        
+                                            <div class="image-details">
+                                                <p class="row">
+                                                    <b class="price col-4"><%= shoe.shoeprice %></b>
+                                                    <b class="cloth-name col-6"><%= shoe.shoename %></b>
+                                                </p>
+                                                <p class="category"><%= shoe.shoecategory %></p>
+                                                <p class="qttb">
+                                                    <b class="quantity"><%= shoe.shoequantity %></b>
+                                                    <a href=" /seller/getsellereditshoe/<%=  shoe._id %> "class=" btn-primary btn text-light">Edit</a>
+                                                    <a href="/seller/deleteproduct/<%=  shoe._id %> " class="btn bg-danger text-light">Delete</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div> 
+                <% } else { %> 
+                    <p><center>No shoes uploaded</center></p>
+                <% } %> -->
+            </div>
+            
+                
+
+           
+
+
+
+            <!-- small screen -->
+            <% if(Shoes.length > 0 ) { %>
+
+                <div class="row mt-3 d-flex d-md-none">
+                    <div class="container position-relative">
+                        <div id="autoSlider3" class="row flex-nowrap overflow-auto">
+                            <% Shoes.forEach((shoe, shoeindex) => { %>
+                                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                                    <div class="image-container">
+                                        <a href="selleredit"><img class="img-fluid" src="/uploads/<%= shoe.files[0] %>" alt="<%= shoe.shoename %>"></a>
+                                        <div class="image-overlay">
+                                            <div class="image-details">
+                                                <p>
+                                                    <b class="price"><%= shoe.shoeprice %></b>
+                                                    <a href="" class="seller"><%= shoe.seller %></a>
+                                                </p>
+                                                <b class="cloth-name"><%= shoe.shoename %></b>
+                                                <p class="category"><%= shoe.category %></p>
+                                                <p class="qttb">
+                                                    <b class="quantity"><%= shoe.shoequantity %></b>
+                                                    <a href=" /seller/getsellereditshoe/<%=  shoe._id %> "class=" btn-primary btn text-light">Edit</a>
+                                                    <a href="/seller/deleteproduct/<%= shoe._id %>?type=shoe" class="btn bg-danger text-light">Delete</a>
+
+                                                    <% if (shoe.trending == false) { %>
+                                                        <a href="/seller/trendproduct/<%= shoe._id %>?type=shoe&action=trend" class="btn bg-warning text-light">Trend</a>
+                                                    <% } else { %>    
+                                                        <a href="/seller/trendproduct/<%= shoe._id %>?type=shoe&action=untrend" class="btn bg-success text-dark">Untrend</a>
+                                                    <% } %>  
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- <div class="row mt-3 d-flex d-md-none">
+                    <div class="container position-relative">
+                        <div id="autoSlider4" class="row flex-nowrap overflow-auto">
+                            <% Shoes.forEach((shoe, shoeindex) => { %>
+                                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                                    <div class="image-container">
+                                        <a href="selleredit"><img class="img-fluid" src="/uploads/<%= shoe.files[0] %>" alt="<%= shoe.shoename %>"></a>
+                                        <div class="image-overlay">
+                                            <div class="image-details">
+                                                <p>
+                                                    <b class="price"><%= shoe.shoeprice %></b>
+                                                    <a href="" class="seller"><%= shoe.seller %></a>
+                                                </p>
+                                                <b class="cloth-name"><%= shoe.shoename %></b>
+                                                <p class="category"><%= shoe.category %></p>
+                                                <p class="qttb">
+                                                    <b class="quantity"><%= shoe.shoequantity %></b>
+                                                    <a href=" /seller/getsellereditshoe/<%=  shoe._id %> "class=" btn-primary btn text-light">Edit</a>
+                                                    <a href="/seller/deleteproduct/<%=  shoe._id %> " class="btn bg-danger text-light">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div> -->
+
+            <% } else { %> 
+                <p><center>No Shoes uploaded</center></p>
+            <% } %> 
+
+          
+            <!-- small screen end -->
+
+        </div>
+
+
+
+        
+        <div id="tab3" class="tab-content">
+            <div class="row mt-5 d-none d-md-flex">
+                <% if(Accessories.length > 0 ) { %>
+                    <div class="container position-relative">
+                        <div id="autoSlider9" class="row flex-nowrap overflow-auto">
+                            <% Accessories.forEach((accessory, accessoryindex)=> { %>
+                                <div class="col-md-3 mb-2">
+                                    <div class="image-container">
+                                       <a href="selleredit"> <img class="img-fluid" src="/uploads/<%= accessory.files[0] %>" alt="<%= accessory.accessoryname %>"></a>
+                                        <div class="image-overlay">
+                                            <a href="" class="seller col-2"><%= accessory.seller %></a>
+                                        
+                                            <div class="image-details">
+                                                <p class="row">
+                                                    <b class="price col-4"><%= accessory.accessoryprice %></b>
+                                                    <b class="cloth-name col-6"><%= accessory.accessoryname %></b>
+                                                </p>
+                                                <p class="category"><%= accessory.accessorycategory %></p>
+                                                <p class="qttb">
+                                                    <b class="quantity"><%= accessory.accessoryquantity %></b>
+                                                    <a href="/seller/getsellereditaccessory/<%= accessory._id %>" class="btn-primary btn text-light">Edit</a>
+                                                    <a href="/seller/deleteproduct/<%= accessory._id %>?type=accessory" class="btn bg-danger text-light">Delete</a>
+
+                                                    <% if (accessory.trending == false) { %>
+                                                        <a href="/seller/trendproduct/<%= accessory._id %>?type=accessory&action=trend" class="btn bg-warning text-light">Trend</a>
+                                                    <% } else { %>    
+                                                        <a href="/seller/trendproduct/<%= accessory._id %>?type=accessory&action=untrend" class="btn bg-success text-dark">Untrend</a>
+                                                    <% } %>  
+                                                </p>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div> 
+                <% } else { %> 
+                    <p><center>No Accessories uploaded</center></p>
+                <% } %> 
+
+                <!-- <% if(Accessories.length > 0 ) { %>
+                    <div class="container position-relative">
+                        <div id="autoSlider10" class="row flex-nowrap overflow-auto">
+                            <% Accessories.forEach((accessory, accessoryindex)=> { %>
+                                <div class="col-md-3 mb-2">
+                                    <div class="image-container">
+                                       <a href="selleredit"> <img class="img-fluid" src="/uploads/<%= accessory.files[0] %>" alt="<%= accessory.accessoryname %>"></a>
+                                        <div class="image-overlay">
+                                            <a href="" class="seller col-2"><%= accessory.seller %></a>
+                                        
+                                            <div class="image-details">
+                                                <p class="row">
+                                                    <b class="price col-4"><%= accessory.accessoryprice %></b>
+                                                    <b class="cloth-name col-6"><%= accessory.accessoryname %></b>
+                                                </p>
+                                                <p class="category"><%= accessory.accessorycategory %></p>
+                                                <p class="qttb">
+                                                    <b class="quantity"><%= accessory.accessoryquantity %></b>
+                                                    <a href="/seller/getsellereditaccessory/<%= accessory._id %>" class="btn-primary btn text-light">Edit</a>
+                                                    <a href="/seller/deleteproduct/<%= accessory._id %>" class="btn bg-danger text-light">Delete</a>
+                                                </p>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div> 
+
+                <% } else { %> 
+                    <p><center>No Accessories uploaded</center></p>
+                <% } %>  -->
+            </div>
+
+            <!-- small screen -->
+
+            <% if(Accessories.length > 0 ) { %> 
+                <div class="row mt-3 d-flex d-md-none">
+                    <div class="container position-relative">
+                        <div id="autoSlider5" class="row flex-nowrap overflow-auto">
+                            <% Accessories.forEach((accessory, accessoryindex) => { %>
+                                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                                    <div class="image-container">
+                                        <a href="selleredit"><img class="img-fluid" src="/uploads/<%= accessory.files[0] %>" alt="<%= accessory.accessoryname %>"></a>
+                                        <div class="image-overlay">
+                                            <div class="image-details">
+                                                <p>
+                                                    <b class="price"><%= accessory.accessoryprice %></b>
+                                                    <a href="" class="seller"><%= accessory.seller %></a>
+                                                </p>
+                                                <b class="cloth-name"><%= accessory.accessoryname %></b>
+                                                <p class="category"><%= accessory.category %></p>
+                                                <p class="qttb">
+                                                    <b class="quantity"><%= accessory.accessoryquantity %></b>
+                                                    <a href="/seller/getsellereditaccessory/<%= accessory._id %>" class="btn-primary btn text-light">Edit</a>
+                                                    <a href="/seller/deleteproduct/<%= accessory._id %>?type=accessory" class="btn bg-danger text-light">Delete</a>
+
+                                                    <% if (accessory.trending == false) { %>
+                                                        <a href="/seller/trendproduct/<%= accessory._id %>?type=accessory&action=trend" class="btn bg-warning text-light">Trend</a>
+                                                    <% } else { %>    
+                                                        <a href="/seller/trendproduct/<%= accessory._id %>?type=accessory&action=untrend" class="btn bg-success text-dark">Untrend</a>
+                                                    <% } %>  
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="row mt-3 d-flex d-md-none">
+                    <div class="container position-relative">
+                        <div id="autoSlider6" class="row flex-nowrap overflow-auto">
+                            <% Accessories.forEach((accessory, accessoryindex) => { %>
+                                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                                    <div class="image-container">
+                                        <a href="selleredit"><img class="img-fluid" src="/uploads/<%= accessory.files[0] %>" alt="<%= accessory.accessoryname %>"></a>
+                                        <div class="image-overlay">
+                                            <div class="image-details">
+                                                <p>
+                                                    <b class="price"><%= accessory.accessoryprice %></b>
+                                                    <a href="" class="seller"><%= accessory.seller %></a>
+                                                </p>
+                                                <b class="cloth-name"><%= accessory.accessoryname %></b>
+                                                <p class="category"><%= accessory.category %></p>
+                                                <p class="qttb">
+                                                    <b class="quantity"><%= accessory.accessoryquantity %></b>
+                                                    <a href="/seller/getsellereditaccessory/<%= accessory._id %>" class="btn-primary btn text-light">Edit</a>
+                                                    <a href="/seller/deleteproduct/<%= accessory._id %>" class="btn bg-danger text-light">Delete</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div> -->
+            <% } else { %>
+                <p><center>No products uploaded</center></p>
+            <% } %> 
+            
+            <!-- end -->
+        </div>
+    </div>
+
+
+<%- include("partials/footer.ejs") %>
