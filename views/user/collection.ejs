@@ -39,8 +39,8 @@
                                     <div class="image-details">
                                         <p class="row">
                                             <b class="price col-4"><%= product.clothprice %></b>
-                                            <b class="cloth-name col-6"><%= product.clothname %></b>
-                                            <a href="" class="seller col-2"><%= product.seller %></a>
+                                            <b class="cloth-name col-6"><a href="/cdetails/<%= product._id %>" class="text-light"> <%= product.clothname %></a></b>
+                                            <a href="/seller/seller/<%= product.sellerId %>" class="seller col-12"><%= product.seller %></a>
                                         </p>
                                         <p class="category"><%= product.clothcategory %></p>
                                         <p class="qttb">
@@ -79,9 +79,9 @@
                                                         <div class=" image-details">
                                                             <p>
                                                                 <b class="price"><%= product.clothprice %></b>
-                                                                <a href="" class="seller"><%= product.seller %></a>
+                                                                <a href="/seller/seller/<%= product.sellerId %>" class="seller"><%= product.seller %></a>
                                                             </p>
-                                                            <b class="cloth-name"><%= product.clothname %></b>
+                                                            <b class="cloth-name"><a href="/cdetails/<%= product._id %>" class="text-light"> <%= product.clothname %></a></b>
                                                             <p class="category"><%= product.clothcategory %></p>
                                                             <p class="qttb">
                                                                 <b class="quantity">qty:<br><input type="number" value="1" name="" id="qty"></b>
@@ -124,8 +124,8 @@
                                     <div class="image-details">
                                         <p class="row">
                                             <b class="price col-4"><%= product.shoeprice %></b>
-                                            <b class="cloth-name col-6"><%= product.shoename %></b>
-                                            <a href="" class="seller col-2"><%= product.seller %></a>
+                                            <b class="cloth-name col-6"><a href="/sdetails/<%= product._id %>" class="text-light"> <%= product.shoename %></a></b>
+                                            <a href="/seller/seller/<%= product.sellerId %>" class="seller col-12"><%= product.seller %></a>
                                         </p>
                                         <p class="category"><%= product.shoecategory %></p>
                                         <p class="qttb">
@@ -164,9 +164,9 @@
                                                         <div class=" image-details">
                                                             <p>
                                                                 <b class="price"><%= product.shoeprice %></b>
-                                                                <a href="" class="seller"><%= product.seller %></a>
+                                                                <a href="/seller/seller/<%= product.sellerId %>" class="seller"><%= product.seller %></a>
                                                             </p>
-                                                            <b class="cloth-name"><%= product.shoename %></b>
+                                                            <b class="cloth-name"><a href="/sdetails/<%= product._id %>" class="text-light"> <%= product.shoename %></a></b>
                                                             <p class="category"><%= product.shoecategory %></p>
                                                             <p class="qttb">
                                                                 <b class="quantity">qty:<br><input type="number" value="1" name="" id="qty"></b>
@@ -209,8 +209,8 @@
                                     <div class="image-details">
                                         <p class="row">
                                             <b class="price col-4"><%= product.accessoryprice %></b>
-                                            <b class="cloth-name col-6"><%= product.accessoryname %></b>
-                                            <a href="" class="seller col-2"><%= product.seller %></a>
+                                            <b class="cloth-name col-6"><a href="/adetails/<%= product._id %>" class="text-light"> <%= product.accessoryname %></a></b>
+                                            <a href="/seller/seller/<%= product.sellerId %>" class="seller col-12"><%= product.seller %></a>
                                         </p>
                                         <p class="category"><%= product.accessorycategory %></p>
                                         <p class="qttb">
@@ -249,9 +249,9 @@
                                                         <div class=" image-details">
                                                             <p>
                                                                 <b class="price"><%= product.accessoryprice %></b>
-                                                                <a href="" class="seller"><%= product.seller %></a>
+                                                                <a href="/seller/seller/<%= product.sellerId %>" class="seller"><%= product.seller %></a>
                                                             </p>
-                                                            <b class="cloth-name"><%= product.accessoryname %></b>
+                                                            <b class="cloth-name"><a href="/adetails/<%= product._id %>" class="text-light"> <%= product.accessoryname %></a></b>
                                                             <p class="category"><%= product.accessorycategory %></p>
                                                             <p class="qttb">
                                                                 <b class="quantity">qty:<br><input type="number" value="1" name="" id="qty"></b>

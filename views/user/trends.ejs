@@ -42,9 +42,9 @@
                                                 <%= product.clothprice %>
                                             </b>
                                             <b class="cloth-name col-6">
-                                                <%= product.clothname %>
+                                                <a href="/cdetails/<%= product._id %>" class="text-light"> <%= product.clothname %></a>
                                             </b>
-                                            <a href="" class="seller col-2">
+                                            <a href="/seller/seller/<%= product.sellerId %>" class="seller col-2">
                                                 <%= product.seller %>
                                             </a>
                                         </p>
@@ -91,12 +91,12 @@
                                                                             <b class="price">
                                                                                 <%= product.clothprice %>
                                                                             </b>
-                                                                            <a href="" class="seller">
+                                                                            <a href="/seller/seller/<%= product.sellerId %>" class="seller">
                                                                                 <%= product.seller %>
                                                                             </a>
                                                                         </p>
                                                                         <b class="cloth-name">
-                                                                            <%= product.clothname %>
+                                                                            <a href="/cdetails/<%= product._id %>" class="text-light"> <%= product.clothname %></a>
                                                                         </b>
                                                                         <p class="category">
                                                                             <%= product.clothcategory %>
@@ -148,9 +148,9 @@
                                                 <%= product.shoeprice %>
                                             </b>
                                             <b class="cloth-name col-6">
-                                                <%= product.shoename %>
+                                                <a href="/sdetails/<%= product._id %>" class="text-light"> <%= product.shoename %></a>
                                             </b>
-                                            <a href="" class="seller col-2">
+                                            <a href="/seller/seller/<%= product.sellerId %>" class="seller col-2">
                                                 <%= product.seller %>
                                             </a>
                                         </p>
@@ -197,12 +197,12 @@
                                                                             <b class="price">
                                                                                 <%= product.shoeprice %>
                                                                             </b>
-                                                                            <a href="" class="seller">
+                                                                            <a href="/seller/seller/<%= product.sellerId %>" class="seller">
                                                                                 <%= product.seller %>
                                                                             </a>
                                                                         </p>
                                                                         <b class="cloth-name">
-                                                                            <%= product.shoename %>
+                                                                            <a href="/sdetails/<%= product._id %>" class="text-light"> <%= product.shoename %></a>
                                                                         </b>
                                                                         <p class="category">
                                                                             <%= product.shoecategory %>
@@ -254,9 +254,9 @@
                                                 <%= product.accessoryprice %>
                                             </b>
                                             <b class="cloth-name col-6">
-                                                <%= product.accessoryname %>
+                                                <a href="/adetails/<%= product._id %>" class="text-light"> <%= product.accessoryname %></a>
                                             </b>
-                                            <a href="" class="seller col-2">
+                                            <a href="/seller/seller/<%= product.sellerId %>" class="seller col-2">
                                                 <%= product.seller %>
                                             </a>
                                         </p>
@@ -303,12 +303,12 @@
                                                                             <b class="price">
                                                                                 <%= product.accessoryprice %>
                                                                             </b>
-                                                                            <a href="" class="seller">
+                                                                            <a href="/seller/seller/<%= product.sellerId %>" class="seller">
                                                                                 <%= product.seller %>
                                                                             </a>
                                                                         </p>
                                                                         <b class="cloth-name">
-                                                                            <%= product.accessoryname %>
+                                                                            <a href="/adetails/<%= product._id %>" class="text-light"> <%= product.accessoryname %></a>
                                                                         </b>
                                                                         <p class="category">
                                                                             <%= product.accessorycategory %>

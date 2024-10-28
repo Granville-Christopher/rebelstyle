@@ -33,11 +33,12 @@
                 <p>Reviews:</p>
 
                 <a href="" class="btn sellerbtn mt-5">Add to Cart</a>
-                <form action="" class=" mt-4">
+                <form action="/review" method="POST" class=" mt-4">
                     <h5 class="text-center">Send us a Review</h5>
                     <div class="">
                         <div class="form-group p-2">
                             <input type="text" id="name" name="name" class="form-control" placeholder="your first name here">
+                            <input type="hidden" name="id" value="<%=%>">
                         </div>
     
                         <div class="form-group p-2">

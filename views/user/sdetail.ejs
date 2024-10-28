@@ -1,0 +1,166 @@
+<%- include("partials/header.ejs") %>
+
+
+    <section class="hero login-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">product detail</li>
+                </ol>
+            </nav>
+            <h1>WELCOME</h1>
+            <p>product details</p>
+        </div>
+    </section>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="/img/pexels-gabby-k-6311693.jpg" class="img-fluid" alt="product image">
+                <div class="row mt-4">
+                    <img src="/img/pexels-gabby-k-6311693.jpg" class="img-fluid col-md-4" alt="product image">
+                    <img src="/img/pexels-gabby-k-6311693.jpg" class="img-fluid col-md-4" alt="product image">
+                    <img src="/img/pexels-gabby-k-6311693.jpg" class="img-fluid col-md-4" alt="product image">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p>Name: </p>
+                <p>Category:</p> 
+                <p>Price:</p>
+                <p>Availability:</p>
+                <p>Description:</p>
+                <p>Reviews:</p>
+
+                <a href="" class="btn sellerbtn mt-5">Add to Cart</a>
+                <form action="/review" method="POST" class=" mt-4">
+                    <h5 class="text-center">Send us a Review</h5>
+                    <div class="">
+                        <div class="form-group p-2">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="your first name here">
+                            <input type="hidden" name="id" value="<%=%>">
+                        </div>
+    
+                        <div class="form-group p-2">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="your email here">
+                        </div>
+
+                        <div class="form-group p-2">
+                            <textarea type="text" id="review" name="review" class="form-control"></textarea>
+                        </div>
+                        
+                        <div class=" p-2">
+                            <button class=" sellerbtn btn" type="submit">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+
+        <div class="others">
+            <h3>Related Products</h3>
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-3 mb-2">
+                                <div class="image-container">
+                                    <img class="img-fluid" src="/img/pexels-chloekalaartist-1043473.jpg" alt="">
+                                    <div class="image-overlay">
+                                        <div class="image-details">
+                                            <p class="row">
+                                                <b class="price col-4">$49.99</b>
+                                                <b class="cloth-name col-6">Summer Dressing</b>
+                                                <a href="" class="seller col-2">john</a>
+                                            </p>
+                                            <p class="category">Women's Fashion</p>
+                                            <p class="qttb">
+                                                <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                <a class="add"><i class="fas fa-shopping-cart"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3 mb-2">
+                                <div class="image-container">
+                                    <img class="img-fluid" src="/img/pexels-gabby-k-6310924.jpg" alt="">
+                                    <div class="image-overlay">
+                                        <div class="image-details">
+                                            <p class="row">
+                                                <b class="price col-4">$49.99</b>
+                                                <b class="cloth-name col-6">Summer Dressing</b>
+                                                <a href="" class="seller col-2">john</a>
+                                            </p>
+                                            <p class="category">Women's Fashion</p>
+                                            <p class="qttb">
+                                                <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                <a class="add"><i class="fas fa-shopping-cart"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3 mb-2">
+                                <div class="image-container">
+                                    <img class="img-fluid" src="/img/pexels-goodcitizen-2072454.jpg" alt="">
+                                    <div class="image-overlay">
+                                        <div class="image-details">
+                                            <p class="row">
+                                                <b class="price col-4">$49.99</b>
+                                                <b class="cloth-name col-6">Summer Dressing</b>
+                                                <a href="" class="seller col-2">john</a>
+                                            </p>
+                                            <p class="category">Women's Fashion</p>
+                                            <p class="qttb">
+                                                <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                <a class="add"><i class="fas fa-shopping-cart"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3 mb-2">
+                                <div class="image-container">
+                                    <img class="img-fluid" src="/img/pexels-gabby-k-6311693.jpg" alt="">
+                                    <div class="image-overlay">
+                                        <div class="image-details">
+                                            <p class="row">
+                                                <b class="price col-4">$49.99</b>
+                                                <b class="cloth-name col-6">Summer Dressing</b>
+                                                <a href="" class="seller col-2">john</a>
+                                            </p>
+                                            <p class="category">Women's Fashion</p>
+                                            <p class="qttb">
+                                                <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                                <a class="add"><i class="fas fa-shopping-cart"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        
+        
+    </div>
+
+
+
+<%- include("partials/footer.ejs") %>
