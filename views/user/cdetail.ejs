@@ -14,31 +14,38 @@
         </div>
     </section>
 
-    <div class="container mt-5">
+    <div class="container mt-5 mydetails">
         <div class="row">
-            <div class="col-md-6">
-                <img src="/img/pexels-gabby-k-6311693.jpg" class="img-fluid" alt="product image">
-                <div class="row mt-4">
-                    <img src="/img/pexels-gabby-k-6311693.jpg" class="img-fluid col-md-4" alt="product image">
-                    <img src="/img/pexels-gabby-k-6311693.jpg" class="img-fluid col-md-4" alt="product image">
-                    <img src="/img/pexels-gabby-k-6311693.jpg" class="img-fluid col-md-4" alt="product image">
-                </div>
+            <div class="col-md-6 one">
+                <% if (product && product.files && product.files.length > 0) { %>
+                    <img src="<%= product.files[0] %>" class="img-fluid" alt="product image">
+                    <div class="row mt-4">
+                        <% for (let i = 1; i < product.files.length; i++) { %>
+                            <img src="<%= product.files[i] %>" class="img-fluid col-md-4" alt="product image">
+                        <% } %>
+                    </div>
+                <% } else { %>
+                    <p>No product images available</p>
+                <% } %>
             </div>
             <div class="col-md-6">
-                <p>Name: </p>
-                <p>Category:</p> 
-                <p>Price:</p>
-                <p>Availability:</p>
-                <p>Description:</p>
-                <p>Reviews:</p>
+                <p><b>Name:</b> <%= product.clothname %></p>
+                <p><b>Category:</b> <%= product.clothcategory %></p> 
+                <p><b>Price:</b> <%= product.clothprice %></p>
+                <p><b>Availability:</b> <%= product.clothquantity %></p>
+                <p><b>Description:</b> <br><%= product.desc %></p><br>
+                <p><b>Total Reviews:</b> <%= reviewCount %></p>
 
-                <a href="" class="btn sellerbtn mt-5">Add to Cart</a>
+                <a href="#" onclick="addToCart('<%= product._id %>', '<%= product.clothname %>', '<%= product.clothprice %>', '<%= product.files[0] %>', '<%= product.seller %>')" class="btn sellerbtn mt-5">Add to Cart</a>
+
                 <form action="/review" method="POST" class=" mt-4">
                     <h5 class="text-center">Send us a Review</h5>
+                    <%- include("partials/alert.ejs") %>
                     <div class="">
                         <div class="form-group p-2">
-                            <input type="text" id="name" name="name" class="form-control" placeholder="your first name here">
-                            <input type="hidden" name="id" value="<%=%>">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="your full name here">
+                            <input type="hidden" name="id" value="<%= product._id %>">
+                            <input type="hidden" name="type" value="cloth">
                         </div>
     
                         <div class="form-group p-2">
@@ -59,105 +66,100 @@
         </div>
 
         <div class="others">
-            <h3>Related Products</h3>
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <div class="col-md-3 mb-2">
-                                <div class="image-container">
-                                    <img class="img-fluid" src="/img/pexels-chloekalaartist-1043473.jpg" alt="">
-                                    <div class="image-overlay">
-                                        <div class="image-details">
-                                            <p class="row">
-                                                <b class="price col-4">$49.99</b>
-                                                <b class="cloth-name col-6">Summer Dressing</b>
-                                                <a href="" class="seller col-2">john</a>
-                                            </p>
-                                            <p class="category">Women's Fashion</p>
-                                            <p class="qttb">
-                                                <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
-                                                <a class="add"><i class="fas fa-shopping-cart"></i></a>
-                                            </p>
-                                        </div>
+            <% if(similarProducts.length > 0){ %>
+                <div class="row mt-5 d-none d-md-flex">
+                    <h3>Related Products</h3>
+                    <% similarProducts.forEach((product, index) => { %>
+                        <div class="col-md-3 mb-2">
+                            <div class="image-container">
+                                <img class="img-fluid" src="<%= product.files[0] %>" alt="">
+                                <div class="image-overlay">
+                                    <div class="image-details">
+                                        <p class="row">
+                                            <b class="price col-4"><%= product.clothprice %></b>
+                                            <b class="cloth-name col-6"><a href="/cdetails/<%= product._id %>" class="text-light"> <%= product.clothname %></a></b>
+                                            <a href="/sellerprofile/<%= product.sellerId %>" class="seller col-12"><%= product.seller %></a>
+                                        </p>
+                                        <p class="category"><%= product.clothcategory %></p>
+                                        <p class="qttb">
+                                            <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                            <a class="add" onclick="addToCart('<%= product._id %>', '<%= product.clothname %>', '<%= product.clothprice %>', '<%= product.files[0] %>', '<%= product.seller %>')">
+                                                <i class="fas fa-shopping-cart"></i>
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-3 mb-2">
-                                <div class="image-container">
-                                    <img class="img-fluid" src="/img/pexels-gabby-k-6310924.jpg" alt="">
-                                    <div class="image-overlay">
-                                        <div class="image-details">
-                                            <p class="row">
-                                                <b class="price col-4">$49.99</b>
-                                                <b class="cloth-name col-6">Summer Dressing</b>
-                                                <a href="" class="seller col-2">john</a>
-                                            </p>
-                                            <p class="category">Women's Fashion</p>
-                                            <p class="qttb">
-                                                <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
-                                                <a class="add"><i class="fas fa-shopping-cart"></i></a>
-                                            </p>
-                                        </div>
+                    <% }) %>
+
+                </div>
+            <% } %>
+
+            <% if(smallClothes.length > 0){ %>
+                <div class="row mt-3 d-flex d-md-none">
+                    <h3>Related Products</h3>
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <% smallClothes.forEach((productChunk, index) => { %>
+                                <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                                    <div class="row">
+                                        <% productChunk.forEach(product => { %>
+                                            <div class="col-6">
+                                                <div class="image-container">
+                                                    <img src="<%= product.files[0] %>" class="img-fluid"
+                                                        alt="...">
+                                                    <div class="image-overlay carousel-caption">
+                                                        <div class=" image-details">
+                                                            <p>
+                                                                <b class="price"><%= product.clothprice %></b>
+                                                                <a href="/sellerprofile/<%= product.sellerId %>" class="seller"><%= product.seller %></a>
+                                                            </p>
+                                                            <b class="cloth-name"><a href="/cdetails/<%= product._id %>" class="text-light"> <%= product.clothname %></a></b>
+                                                            <p class="category"><%= product.clothcategory %></p>
+                                                            <p class="qttb">
+                                                                <b class="quantity">qty:<br><input type="number" value="1" name="" id="qty"></b>
+                                                                <a class="add" onclick="addToCart('<%= product._id %>', '<%= product.clothname %>', '<%= product.clothprice %>', '<%= product.files[0] %>', '<%= product.seller %>')">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                </a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <% }) %>
+                                        
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-3 mb-2">
-                                <div class="image-container">
-                                    <img class="img-fluid" src="/img/pexels-goodcitizen-2072454.jpg" alt="">
-                                    <div class="image-overlay">
-                                        <div class="image-details">
-                                            <p class="row">
-                                                <b class="price col-4">$49.99</b>
-                                                <b class="cloth-name col-6">Summer Dressing</b>
-                                                <a href="" class="seller col-2">john</a>
-                                            </p>
-                                            <p class="category">Women's Fashion</p>
-                                            <p class="qttb">
-                                                <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
-                                                <a class="add"><i class="fas fa-shopping-cart"></i></a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-3 mb-2">
-                                <div class="image-container">
-                                    <img class="img-fluid" src="/img/pexels-gabby-k-6311693.jpg" alt="">
-                                    <div class="image-overlay">
-                                        <div class="image-details">
-                                            <p class="row">
-                                                <b class="price col-4">$49.99</b>
-                                                <b class="cloth-name col-6">Summer Dressing</b>
-                                                <a href="" class="seller col-2">john</a>
-                                            </p>
-                                            <p class="category">Women's Fashion</p>
-                                            <p class="qttb">
-                                                <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
-                                                <a class="add"><i class="fas fa-shopping-cart"></i></a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                            <% }) %>
                         </div>
                     </div>
                 </div>
-            </div> 
+            <% } %>
+
         </div>
         
+        <div class="container reviews">
+            <h4>Product Reviews</h4>
+            <% if(reviews.length > 0){ %>
+                <% reviews.forEach(review => { %>  
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                <h6 class="card-title d-flex justify-content-between">
+                                    <span class="fw-bold"><%= review.name %> <br> <span class="text-danger"><%= review.email %></span></span>
+                                    <span><%= review.date %></span>
+                                </h6>
+                                <p class="card-text mt-3"><%= review.review %></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } %>
+        </div>
         
     </div>
 
