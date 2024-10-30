@@ -14,8 +14,10 @@
             <p>Curated Styles That Define Today's Fashion Scene</p>
             <button class="btn btn-outline-white">Shop the Trends</button>
             <div class="search-section mt-5">
-                <input type="search" name="search" id="search" class="search-input" placeholder="search">
-                <button> <i class="fas fa-search"></i></button>
+                <form action="/search" method="POST">
+                    <input type="search" name="search" id="search" class="search-input" placeholder="search">
+                    <button> <i class="fas fa-search"></i></button>
+                </form>
             </div>
         </div>
     </section>

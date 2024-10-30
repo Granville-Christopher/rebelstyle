@@ -1,0 +1,37 @@
+<%- include("partials/header.ejs") %>
+
+
+    <section class="hero collections-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Seller Details</li>
+                </ol>
+            </nav>
+            <h1>Seller Information</h1>
+        </div>
+    </section>
+    <div class="container mt-5">
+        <div class="row">            
+            <div class="col-md-8">
+                <h5 class="mb-4 fw-bold">Account Details</h5>
+                <p><b>First Name:</b> <%= seller.Fname %></p>
+                <p><b>Last Name:</b> <%= seller.Lname %></p>
+                <p><b>Email:</b> <%= seller.email %></p>
+                <p><b>Phone Number:</b> <%= seller.phone %></p>
+                <p><b>State:</b> <%= seller.state %></p>
+                <p><b>Zip Code:</b> <%= seller.zip %></p>
+                <p><b>City:</b> <%= seller.city %></p>
+                <p><b>Address:</b> <%= seller.address %></p>
+            </div>
+            <div class="col-md-4">
+                <h5 class="mb-4 fw-bold">Bank Details</h5>
+                <p><b>Bank Name:</b> <%= seller.bankName %></p>
+                <p><b>Bank Account Name:</b> <%= seller.bankAccountName %></p>
+                <p><b>Bank Account Number:</b> <%= seller.bankAccountNumber %></p>
+            </div>
+        </div>
+    </div>
+
+<%- include("partials/footer.ejs") %>
