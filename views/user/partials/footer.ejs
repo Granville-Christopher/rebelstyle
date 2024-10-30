@@ -63,7 +63,7 @@
         }, 3000);
     }
 
-    function addToCart(id, name, price, image, seller) {
+    function addToCart(id, name, price, image, seller, sellerId) {
         // Get the current cart from sessionStorage or initialize it
         let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
         
@@ -81,7 +81,8 @@
                 price: price,
                 image: image,
                 quantity: 1,
-                seller: seller
+                seller: seller,
+                sellerId: sellerId
             });
         }
         

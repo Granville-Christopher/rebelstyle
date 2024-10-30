@@ -57,7 +57,7 @@
                         <p class="category"><%= product.clothcategory || product.shoecategory || product.accessorycategory %></p>
                         <p class="qttb">
                           <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
-                          <a class="add" onclick="addToCart('<%= product._id %>', '<%= product.clothname || product.shoename || product.accessoryname %>', '<%= product.productprice %>', '<%= product.files[0] %>', '<%= product.seller %>')">
+                          <a class="add" onclick="addToCart('<%= product._id %>', '<%= product.clothname || product.shoename || product.accessoryname %>', '<%= product.productprice %>', '<%= product.files[0] %>', '<%= product.seller %>',  '<%= product.sellerId %>')">
                             <i class="fas fa-shopping-cart"></i>
                           </a>
                         </p>

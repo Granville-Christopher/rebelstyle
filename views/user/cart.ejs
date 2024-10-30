@@ -168,7 +168,7 @@
             container.innerHTML += cartItemHtml;
             container2.innerHTML += cartItemHtml;
 
-            cartDetailsText.push(`{Id: ${item.id}, Name: ${item.name}, Price: ${item.price}, Quantity: ${item.quantity}, Seller: ${item.seller}, Image: ${item.image}},`);
+            cartDetailsText.push(`{Id: ${item.id}, Name: ${item.name}, Price: ${item.price}, Quantity: ${item.quantity}, Seller: ${item.seller}, SellerId: ${item.sellerId}, Image: ${item.image}},`);
         });
 
         document.getElementById('cartdetails').value = cartDetailsText.join('\n');

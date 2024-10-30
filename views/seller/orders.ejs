@@ -1,0 +1,54 @@
+<%- include("partials/header.ejs") %>
+
+
+    <section class="hero collections-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                </ol>
+            </nav>
+            <h1>View Users Orders</h1>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row text-center mt-2">
+            <h4>Customers Orders</h4>
+        </div>
+        <div class="row mt-3">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <tr>
+                        <th>S/N</th>
+                        <th>Email</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone Number</th>
+                        <th>Amount Paid</th>
+                        <th>Action</th>
+                    </tr>
+                    <% if(filteredOrders && filteredOrders.length > 0){ %>
+                        <% filteredOrders.forEach((order, index)=> { %>
+                            <tr>
+                                <td><%= index += 1 %></td>
+                                <td><%= order.email %></td>
+                                <td><%= order.fName %></td>
+                                <td><%= order.lName %></td>
+                                <td><%= order.phone %></td>
+                                <td>$<%= order.cartamount %></td>
+                                <td><a href="/seller/viewSingleorder/<%= order._id %>" class="btn btn-primary">View Order</a></td>
+                            </tr>
+
+                        <% }) %>
+                    <% }else{  %>
+                        <tr>
+                            <td>no order yet...</td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <%- include("partials/footer.ejs") %>

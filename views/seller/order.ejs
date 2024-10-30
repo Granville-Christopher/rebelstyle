@@ -47,19 +47,11 @@
                 <p><b>Zip Code:</b> <%= order.zip %></p>
                 <p><b>City:</b> <%= order.city %></p>
                 <p><b>Contact Address:</b> <br><%= order.address %></p>
-                <p><b>Amount Paid:</b> <span class="text-success">$<%= order.cartamount %></span></p>
-                <p><b>Seller Status <br>
-                    <% if (order.sellerStatus && order.sellerStatus == true){ %>                    
-                        <span class="fw-bold text-success">Completed</span>
-                    <% } else { %>
-                        <span class="fw-bold text-danger">Pending</span>
-                    <% } %>
-                </p><br>
                 <p><b>Mark / Unmark order as Completed <br>
-                    <% if (order.status == false){ %>                    
-                        <a href="/admin/updateOrder/<%= order._id %>" class="btn btn-success">Mark Order</a>
+                    <% if (order.sellerStatus && order.sellerStatus == true){ %>                    
+                        <a href="/seller/updateOrder2/<%= order._id %>" class="btn btn-danger">Unmark Order</a>
                     <% } else { %>
-                        <a href="/admin/updateOrder2/<%= order._id %>" class="btn btn-danger">Unmark Order</a>
+                        <a href="/seller/updateOrder/<%= order._id %>" class="btn btn-success">Mark Order</a>
                     <% } %>
                 </p><br>
             </div>
