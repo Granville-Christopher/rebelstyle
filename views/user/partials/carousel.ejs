@@ -14,7 +14,16 @@
                                                 <%= product[`${productType}price`] %>
                                             </b>
                                             <b class="cloth-name col-6">
-                                                <a href="/details/<%= product._id %>" class="text-light">
+                                                <a href="
+                                                <% if(productType == 'cloth'){ %>
+                                                    /cdetails/<%= product._id %>
+                                                <% } else if(productType == 'shoe'){ %>                                
+                                                    /sdetails/<%= product._id %>
+                                                <% } else if(productType == 'accessory'){ %>                                
+                                                    /adetails/<%= product._id %>
+                                                <% } %>
+                                                
+                                                " class="text-light">
                                                     <%= product[`${productType}name`] %>
                                                 </a>
                                             </b>
