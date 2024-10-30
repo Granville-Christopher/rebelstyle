@@ -1,0 +1,123 @@
+<%- include("partials/header.ejs") %>
+
+
+
+    <section class="hero collections-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Collections</li>
+                </ol>
+            </nav>
+            <h1>Explore Our Collections</h1>
+            <p>Discover the latest fashion trends and styles</p>
+            <button class="btn btn-outline-white">Shop Now</button>
+            <div class="search-section mt-5" >
+                <form action="/search" method="POST">
+                    <input type="search" name="search" id="search" class="search-input" placeholder="search">
+                    <button> <i class="fas fa-search"></i></button>
+                </form>
+            </div> 
+        </div>
+    </section>
+
+    <div class="tab-container align-items-center">
+        <div class="tab-header justify-content-center flex-fill">
+            <a href="clothescollection"><button class="btn">Clothes</button></a>
+            <a href="shoecollection"><button class="btn">Footwears</button></a>
+            <a href="accessoriescollection"><button class="btn active">Accessories</button></a>
+        </div>
+
+        
+        <div id="tab3" class="tab-content active">
+            <% if(Accessories){ %>
+                <div class="row mt-5 d-none d-md-flex">
+                    <% Accessories.forEach((product, index) => { %>
+                        <div class="col-md-3 mb-2">
+                            <div class="image-container">
+                                <img class="img-fluid" src="<%= product.files[0] %>" alt="">
+                                <div class="image-overlay">
+                                    <div class="image-details">
+                                        <p class="row">
+                                            <b class="price col-4"><%= product.accessoryprice %></b>
+                                            <b class="cloth-name col-6"><a href="/adetails/<%= product._id %>" class="text-light"> <%= product.accessoryname %></a></b>
+                                            <a href="/sellerprofile/<%= product.sellerId %>" class="seller col-12"><%= product.seller %></a>
+                                        </p>
+                                        <p class="category"><%= product.accessorycategory %></p>
+                                        <p class="qttb">
+                                            <b class="quantity">qty: <input type="number" value="1" name="" id="qty"></b>
+                                            <a class="add" onclick="addToCart('<%= product._id %>', '<%= product.accessoryname %>', '<%= product.accessoryprice %>', '<%= product.files[0] %>', '<%= product.seller %>',  '<%= product.sellerId %>')">
+                                                <i class="fas fa-shopping-cart"></i>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+
+                </div>
+            <% }else{ %>
+                <div class="row mt-5 d-none d-md-flex">
+                    <p>no product in this category</p>
+                </div>
+            <% } %>
+
+            <!-- small screen -->
+            <% if(smallAccessories){ %>
+                <div class="row mt-3 d-flex d-md-none">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <% smallAccessories.forEach((productChunk, index) => { %>
+                                <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                                    <div class="row">
+                                        <% productChunk.forEach(product => { %>
+                                            <div class="col-6">
+                                                <div class="image-container">
+                                                    <img src="<%= product.files[0] %>" class="img-fluid"
+                                                        alt="...">
+                                                    <div class="image-overlay carousel-caption">
+                                                        <div class=" image-details">
+                                                            <p>
+                                                                <b class="price"><%= product.accessoryprice %></b>
+                                                                <a href="/sellerprofile/<%= product.sellerId %>" class="seller"><%= product.seller %></a>
+                                                            </p>
+                                                            <b class="cloth-name"><a href="/adetails/<%= product._id %>" class="text-light"> <%= product.accessoryname %></a></b>
+                                                            <p class="category"><%= product.accessorycategory %></p>
+                                                            <p class="qttb">
+                                                                <b class="quantity">qty:<br><input type="number" value="1" name="" id="qty"></b>
+                                                                <a class="add" onclick="addToCart('<%= product._id %>', '<%= product.accessoryname %>', '<%= product.accessoryprice %>', '<%= product.files[0] %>', '<%= product.seller %>',  '<%= product.sellerId %>')">
+                                                                    <i class="fas fa-shopping-cart"></i>
+                                                                </a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <% }) %>
+                                        
+                                    </div>
+                                </div>
+
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+            <% }else{ %>
+                <div class="row mt-3 d-flex d-md-none">
+                    <p>no product available</p>
+                </div>
+            <% } %>
+
+            
+            <!-- end -->
+        </div>
+
+
+        
+        
+    </div>
+
+
+<%- include("partials/footer.ejs") %>

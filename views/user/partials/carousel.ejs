@@ -1,0 +1,45 @@
+<div id="<%= carouselId %>" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <% items.forEach((productChunk, index) => { %>
+            <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                <div class="row">
+                    <% productChunk.forEach(product => { %>
+                        <div class="col-md-3 mb-2">
+                            <div class="image-container">
+                                <img class="img-fluid" src="<%= product.files[0] %>" alt="">
+                                <div class="image-overlay">
+                                    <div class="image-details">
+                                        <p class="row">
+                                            <b class="price col-4">
+                                                <%= product[`${productType}price`] %>
+                                            </b>
+                                            <b class="cloth-name col-6">
+                                                <a href="/details/<%= product._id %>" class="text-light">
+                                                    <%= product[`${productType}name`] %>
+                                                </a>
+                                            </b>
+                                            <a href="/sellerprofile/<%= product.sellerId %>" class="seller col-12">
+                                                <%= product.seller %>
+                                            </a>
+                                        </p>
+                                        <p class="category">
+                                            <%= product[`${productType}category`] %>
+                                        </p>
+                                        <p class="qttb">
+                                            <b class="quantity">qty: 
+                                                <input type="number" value="1" name="" id="qty">
+                                            </b>
+                                            <a class="add" onclick="addToCart('<%= product._id %>', '<%= product[`${productType}name`] %>', '<%= product[`${productType}price`] %>', '<%= product.files[0] %>', '<%= product.seller %>', '<%= product.sellerId %>')">
+                                                <i class="fas fa-shopping-cart"></i>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
