@@ -109,9 +109,9 @@
 
                 <div class="form-group mt-3">
                     <p>Please Pay The Above Amount To The Account Below And Click On Place Order Button For Your Order To Be Processed. <br><b>Note:</b>Failure To Complete Payment Will Result To Unprocessed Order</p>
-                    <p><b>Bank Name:</b> Opay</p>
-                    <p><b>Account Name:</b> Granville Christopher</p>
-                    <p><b>Account Number:</b> 9133871053</p>
+                    <p><b>Bank Name:</b> <%= bank.bankName %></p>
+                    <p><b>Account Name:</b> <%= bank.bankAccount %></p>
+                    <p><b>Account Number:</b> <%= bank.bankAccountNumber %></p>
                 </div>
 
                 <textarea style="display: none;" name="" id="cartdetails" class="form-control"></textarea>
