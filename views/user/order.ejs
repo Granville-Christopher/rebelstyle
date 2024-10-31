@@ -1,0 +1,45 @@
+<%- include("partials/header.ejs") %>
+
+
+    <section class="hero collections-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">User Order</li>
+                </ol>
+            </nav>
+            <h1>View User Order</h1>
+        </div>
+    </section>
+    <div class="container orderdiv">
+        <div class="row text-center mt-2">
+            <h4>My Order</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row mt-5 d-md-flex">
+                    
+                    <% cartItems.forEach(item => { %>
+                        <div class="col-md-3">
+                          <div class="image-container-cart">
+                            <img class="img-fluid" src="<%= item.Image.trim() %>" alt="<%= item.Name %>">
+                            <div class="image-details mt-3">
+                              <p class="amount"><b><%= item.Price %></b></p>
+                              <b class="cloth-name"><%= item.Name %></b>
+                              <p class="quantity">quantity: <%= item.Quantity.trim() %></p>
+                              <p class="quantity">Amount To Pay:
+                                $<%= parseFloat(item.Price.replace('$', '').replace(/,/g, '')) * parseInt(item.Quantity.trim()) %>
+                              </p>
+                              <p class="quantity">seller: <a href="/sellerprofile/<%=  item.SellerId.toString().trim() %>"><%= item.Seller %></a></p>
+                            </div>
+                          </div>
+                        </div>
+                    <% }) %>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include("partials/footer.ejs") %>

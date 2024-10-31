@@ -1,0 +1,56 @@
+<%- include("partials/header.ejs") %>
+
+
+    <section class="hero collections-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                </ol>
+            </nav>
+            <h1>View Users Orders</h1>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row text-center mt-2">
+            <h4>My Order History</h4>
+        </div>
+        <div class="row mt-3">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <tr>
+                        <th>S/N</th>
+                        <th>Reference</th>
+                        <th>Amount Paid</th>
+                        <th>Order Status</th>
+                        <th>Action</th>
+                    </tr>
+                    <% if(orders && orders.length > 0){ %>
+                        <% orders.forEach((order, index)=> { %>
+                            <tr>
+                                <td><%= index += 1 %></td>
+                                <td><%= order.reference %></td>
+                                <td>$<%= order.cartamount %></td>
+                                <td>
+                                    <% if(order.status == false){ %>
+                                        <span class="badge bg-warning">Pending</span>
+                                    <% } else if(order.status == true){ %>
+                                        <span class="badge bg-success">Completed</span>
+                                    <% } %>
+                                </td>
+                                <td><a href="/viewSingleorder/<%= order._id %>" class="btn btn-primary">View Order</a></td>
+                            </tr>
+
+                        <% }) %>
+                    <% }else{  %>
+                        <tr>
+                            <td>no order yet...</td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <%- include("partials/footer.ejs") %>
