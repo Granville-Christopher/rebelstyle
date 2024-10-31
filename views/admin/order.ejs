@@ -12,13 +12,13 @@
             <h1>View User Order</h1>
         </div>
     </section>
-    <div class="container">
+    <div class="container orderdiv">
         <div class="row text-center mt-2">
             <h4>Customer Order</h4>
         </div>
         <div class="row">
             <div class="col-md-8">
-                <div class="row mt-5 d-none d-md-flex">
+                <div class="row mt-5 d-md-flex">
                     
                     <% cartItems.forEach(item => { %>
                         <div class="col-md-3">
@@ -28,6 +28,9 @@
                               <p class="amount"><b><%= item.Price %></b></p>
                               <b class="cloth-name"><%= item.Name %></b>
                               <p class="quantity">quantity: <%= item.Quantity.trim() %></p>
+                              <p class="quantity">Amount To Pay:
+                                <%= parseFloat(item.Price.replace('$', '').replace(/,/g, '')) * parseInt(item.Quantity.trim()) %>
+                              </p>
                               <p class="quantity">seller: <a href="/admin/seller/<%=  item.SellerId %>"><%= item.Seller %></a></p>
                             </div>
                           </div>

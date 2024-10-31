@@ -24,9 +24,9 @@
 
     <div class="tab-container align-items-center">
         <div class="tab-header justify-content-center flex-fill">
-            <a href="clothescollection"><button class="btn">Clothes</button></a>
-            <a href="shoecollection"><button class="btn btn-danger active">Footwears</button></a>
-            <a href="accessoriescollection"><button class="btn">Accessories</button></a>
+            <a href="clothescollection"><button class="tab-button">Clothes</button></a>
+            <a href="shoecollection"><button class="tab-button active">Footwears</button></a>
+            <a href="accessoriescollection"><button class="tab-button">Accessories</button></a>
         </div>
         
         <div id="tab2" class="tab-content active">
@@ -66,42 +66,36 @@
             <!-- small screen -->
             <% if(smallShoes){ %>
                 <div class="row mt-3 d-flex d-md-none">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <% smallShoes.forEach((productChunk, index) => { %>
-                                <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
-                                    <div class="row">
-                                        <% productChunk.forEach(product => { %>
-                                            <div class="col-6">
-                                                <div class="image-container">
-                                                    <img src="<%= product.files[0] %>" class="img-fluid"
-                                                        alt="...">
-                                                    <div class="image-overlay carousel-caption">
-                                                        <div class=" image-details">
-                                                            <p>
-                                                                <b class="price"><%= product.shoeprice %></b>
-                                                                <a href="/sellerprofile/<%= product.sellerId %>" class="seller"><%= product.seller %></a>
-                                                            </p>
-                                                            <b class="cloth-name"><a href="/sdetails/<%= product._id %>" class="text-light"> <%= product.shoename %></a></b>
-                                                            <p class="category"><%= product.shoecategory %></p>
-                                                            <p class="qttb">
-                                                                <b class="quantity">qty:<br><input type="number" value="1" name="" id="qty"></b>
-                                                                <a class="add" onclick="addToCart('<%= product._id %>', '<%= product.shoename %>', '<%= product.shoeprice %>', '<%= product.files[0] %>', '<%= product.seller %>',  '<%= product.sellerId %>')">
-                                                                    <i class="fas fa-shopping-cart"></i>
-                                                                </a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                    <% smallShoes.forEach((productChunk, index) => { %>
+                        <div class="row">
+                            <% productChunk.forEach(product => { %>
+                                <div class="col-6">
+                                    <div class="image-container">
+                                        <img src="<%= product.files[0] %>" class="img-fluid"
+                                            alt="...">
+                                        <div class="image-overlay carousel-caption">
+                                            <div class=" image-details">
+                                                <p>
+                                                    <b class="price"><%= product.shoeprice %></b>
+                                                    <a href="/sellerprofile/<%= product.sellerId %>" class="seller"><%= product.seller %></a>
+                                                </p>
+                                                <b class="cloth-name"><a href="/sdetails/<%= product._id %>" class="text-light"> <%= product.shoename %></a></b>
+                                                <p class="category"><%= product.shoecategory %></p>
+                                                <p class="qttb">
+                                                    <b class="quantity">qty:<br><input type="number" value="1" name="" id="qty"></b>
+                                                    <a class="add" onclick="addToCart('<%= product._id %>', '<%= product.shoename %>', '<%= product.shoeprice %>', '<%= product.files[0] %>', '<%= product.seller %>',  '<%= product.sellerId %>')">
+                                                        <i class="fas fa-shopping-cart"></i>
+                                                    </a>
+                                                </p>
                                             </div>
-                                        <% }) %>
-                                        
+                                        </div>
                                     </div>
                                 </div>
-
                             <% }) %>
+                            
                         </div>
-                    </div>
+
+                    <% }) %>
                 </div>
             <% }else{ %>
                 <div class="row mt-3 d-flex d-md-none">
