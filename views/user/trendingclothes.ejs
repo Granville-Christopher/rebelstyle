@@ -36,17 +36,20 @@
                     <% Clothes.forEach((product, index)=> { %>
                         <div class="col-md-3 mb-2">
                             <div class="image-container">
-                                <img class="img-fluid" src="<%= product.files[0] %>" alt="">
+                                <a href="/cdetails/<%= product._id %>">
+                                    <img src="<%= product.files[0] %>"
+                                        class="img-fluid" alt="...">
+                                </a>
                                 <div class="image-overlay">
-                                    <div class="image-details">
+                                    <div class="image-details container">
                                         <p class="row">
                                             <b class="price col-4">
                                                 <%= product.clothprice %>
                                             </b>
-                                            <b class="cloth-name col-6">
+                                            <b class="cloth-name col-8">
                                                 <a href="/cdetails/<%= product._id %>" class="text-light"> <%= product.clothname %></a>
                                             </b>
-                                            <a href="/sellerprofile/<%= product.sellerId %>" class="seller col-2">
+                                            <a href="/sellerprofile/<%= product.sellerId %>" class="seller col-12">
                                                 <%= product.seller %>
                                             </a>
                                         </p>
@@ -82,8 +85,10 @@
                             <% productChunk.forEach(product=> { %>
                                 <div class="col-6">
                                     <div class="image-container">
-                                        <img src="<%= product.files[0] %>"
-                                            class="img-fluid" alt="...">
+                                        <a href="/cdetails/<%= product._id %>">
+                                            <img src="<%= product.files[0] %>"
+                                                class="img-fluid" alt="...">
+                                        </a>
                                         <div class="image-overlay carousel-caption">
                                             <div class=" image-details">
                                                 <p>
@@ -127,6 +132,22 @@
 
 
             <!-- end -->
+            <!-- Pagination Links -->
+            <ul class="pagination">
+                <% if (currentPage > 1) { %>
+                    <a href="?page=<%= currentPage - 1 %>">Previous</a>
+                <% } %>
+
+                <% for (let i = startPage; i <= endPage; i++) { %>
+                    <a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>">
+                        <%= i %>
+                    </a>
+                <% } %>
+
+                <% if (currentPage < totalPages) { %>
+                    <a href="?page=<%= currentPage + 1 %>">Next</a>
+                <% } %>
+            </ul>
         </div>
     </div>
 

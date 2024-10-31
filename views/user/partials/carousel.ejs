@@ -6,14 +6,24 @@
                     <% productChunk.forEach(product => { %>
                         <div class="col-md-3 mb-2">
                             <div class="image-container">
-                                <img class="img-fluid" src="<%= product.files[0] %>" alt="">
+                                <a href="
+                                    <% if(productType == 'cloth'){ %>
+                                        /cdetails/<%= product._id %>
+                                    <% } else if(productType == 'shoe'){ %>                                
+                                        /sdetails/<%= product._id %>
+                                    <% } else if(productType == 'accessory'){ %>                                
+                                        /adetails/<%= product._id %>
+                                    <% } %>
+                                ">
+                                    <img class="img-fluid" src="<%= product.files[0] %>" alt="">
+                                </a>
                                 <div class="image-overlay">
-                                    <div class="image-details">
+                                    <div class="image-details container">
                                         <p class="row">
                                             <b class="price col-4">
                                                 <%= product[`${productType}price`] %>
                                             </b>
-                                            <b class="cloth-name col-6">
+                                            <b class="cloth-name col-8">
                                                 <a href="
                                                 <% if(productType == 'cloth'){ %>
                                                     /cdetails/<%= product._id %>
