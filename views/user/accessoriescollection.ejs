@@ -43,7 +43,7 @@
                                 <div class="image-overlay">
                                     <div class="image-details container">
                                         <p class="row">
-                                            <b class="price col-4"><%= product.accessoryprice %></b>
+                                            <b class="price col-4"><s>N</s><%= product.accessoryprice %></b>
                                             <b class="cloth-name col-7"><a href="/adetails/<%= product._id %>" class="text-light"> <%= product.accessoryname %></a></b>
                                             <a href="/sellerprofile/<%= product.sellerId %>" class="seller col-12"><%= product.seller %></a>
                                         </p>
@@ -82,7 +82,7 @@
                                         <div class="image-overlay carousel-caption">
                                             <div class=" image-details">
                                                 <p>
-                                                    <b class="price"><%= product.accessoryprice %></b>
+                                                    <b class="price"><s>N</s><%= product.accessoryprice %></b>
                                                     <a href="/sellerprofile/<%= product.sellerId %>" class="seller"><%= product.seller %></a>
                                                 </p>
                                                 <b class="cloth-name"><a href="/adetails/<%= product._id %>" class="text-light"> <%= product.accessoryname %></a></b>

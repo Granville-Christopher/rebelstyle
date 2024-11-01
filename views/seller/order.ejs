@@ -25,7 +25,7 @@
                           <div class="image-container-cart">
                             <img class="img-fluid" src="<%= item.Image.trim() %>" alt="<%= item.Name %>">
                             <div class="image-details mt-3">
-                              <p class="amount"><b><%= item.Price %></b></p>
+                              <p class="amount"><b><s>N</s><%= item.Price %></b></p>
                               <b class="cloth-name"><%= item.Name %></b>
                               <p class="quantity">quantity: <%= item.Quantity.trim() %></p>
                               <p class="quantity">seller: <a href="/admin/seller/<%=  item.SellerId %>"><%= item.Seller %></a></p>

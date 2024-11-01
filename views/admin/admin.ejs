@@ -12,288 +12,67 @@
             <h1>Admin Interface</h1>
         </div>
     </section>
-    <style>
-        .seller {
-            margin-top: 100px;
-            padding: 2px;
-            width: 50%;
-        }
-    </style>
-    <div class="tab-container align-items-center">
-        <div class="tab-header justify-content-center flex-fill">
-            <button class="tab-button active" onclick="openTab(event, 'tab1')">Sellers</button>
-            <button class="tab-button" onclick="openTab(event, 'tab2')">Buyers</button>
-            <!-- <button class="tab-button" onclick="openTab(event, 'tab3')">Products</button> -->
-        </div>
-        <div id="tab1" class="tab-content active">
-
-            <div class=" mt-2 d-none d-md-flex">
-                <div class="container">
-                    <h4>Total number of Registered Sellers: </h4>
-                    <table class="table table-striped table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Phone number</th>
-                                <th scope="col">Address</th>
-                                <th scope="col">action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% if (sellers.length> 0) { %>
-                                <% sellers.forEach((seller, sellerindex)=> { %>
-                                    <tr>
-                                        <td><%= seller.Fname %></td>
-                                        <td><%= seller.Lname %></td>
-                                        <td><a class="text-primary" href="/admin/seller/<%=  seller._id %>"><%= seller.email %></a></td>
-                                        <td><%= seller.phone %></td>
-                                        <td><%= seller.address %> </td>
-                                        <td>
-                                            <% if (seller.block == true) { %>
-                                                <a href="/admin/unblockseller/<%=  seller._id %> " class="btn btn-success">unblock</a>
-                                            <% } else { %>
-                                                <a href="/admin/blockseller/<%=  seller._id %> " class="btn btn-primary">block</a>
-                                            <% } %>
-
-                                            <a href="/admin/deleteseller/<%=  seller._id %> " class="btn btn-danger">delete</a>
-                                        </td>
-                                    </tr>
-                                <% }) %>
-                            <% } else { %>
-                                <tr>
-                                    <td>No Account Created</td>
-                                </tr>
-                            <% } %>
-                        </tbody>
-                    </table>
-
-                </div>
-
-            </div>
-
-            <!-- small screen -->
-
-            <!-- small screen -->
-            <div class="row mt-3 d-flex d-md-none">
-                <div class="container">
-                    <b>Total number of Registered Sellers: </b>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered ">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th scope="col">First Name</th>
-                                    <th scope="col">Last Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Phone number</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% if (sellers.length> 0) { %>
-                                    <% sellers.forEach((seller, sellerindex)=> { %>
-                                        <tr>
-                                            <td><%= seller.Fname %></td>
-                                            <td><%= seller.Lname %></td>
-                                            <td><%= seller.email %></td>
-                                            <td><%= seller.phone %></td>
-                                            <td><%= seller.address %> </td>
-                                            <td>
-                                                <% if (seller.block == true) { %>
-                                                    <a href="/admin/unblockseller/<%=  seller._id %> " class="btn btn-success mt-2">unblock</a>
-                                                <% } else { %>
-                                                    <a href="/admin/blockseller/<%=  seller._id %> " class="btn btn-primary mt-2">block</a>
-                                                <% } %>
     
-                                                <a href="/admin/deleteseller/<%=  seller._id %> " class="btn btn-danger">delete</a>
-                                            </td>
-                                        </tr>
-                                    <% }) %>
-                                <% } else { %>
-                                    <tr>
-                                        <td>No Account Created</td>
-                                    </tr>
-                                <% } %>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!-- small screen end -->
-
+    <div class="container admin mt-5">
+        <div class="row">
+            <h2>WEBSITE SUMMARY</h2>
         </div>
-        <div id="tab2" class="tab-content">
-
-            <div class=" mt-2 d-none d-md-flex">
-                <div class="container">
-                    <h4>Total number of Registered Users: </h4>
-                    <table class="table table-striped table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Phone number</th>
-                                <th scope="col">Address</th>
-                                <th scope="col">action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% if (users.length> 0) { %>
-                                <% users.forEach((user, userindex)=> { %>
-                                    <tr>
-                                        <td><%= user.Fname %></td>
-                                        <td><%= user.Lname %></td>
-                                        <td><%= user.email %></td>
-                                        <td><%= user.phone %></td>
-                                        <td><%= user.address %> </td>
-                                        <td>
-                                            <% if (user.block == true) { %>
-                                                <a href="/admin/unblockuser/<%=  user._id %> " class="btn btn-success">unblock</a>
-                                            <% } else { %>
-                                                <a href="/admin/blockuser/<%=  user._id %> " class="btn btn-primary">block</a>
-                                            <% } %>
-
-                                            <a href="/admin/deleteuser/<%=  user._id %> " class="btn btn-danger">delete</a>
-                                        </td>
-                                    </tr>
-                                <% }) %>
-                            <% } else { %>
-                                <tr>
-                                    <td>No Account Created</td>
-                                </tr>
-                            <% } %>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-
-            <!-- small screen -->
-
-            <!-- small screen -->
-            <div class="row mt-3 d-flex d-md-none">
-                <div class="container">
-                    <div class="table-responsive">
-
-                        <b>Total number of Registered Users: </b>
-                        <table class="table table-striped table-bordered">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th scope="col">First Name</th>
-                                    <th scope="col">Last Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Phone number</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% if (users.length> 0) { %>
-                                    <% users.forEach((user, userindex)=> { %>
-                                        <tr>
-                                            <td><%= user.Fname %></td>
-                                            <td><%= user.Lname %></td>
-                                            <td><%= user.email %></td>
-                                            <td><%= user.phone %></td>
-                                            <td><%= user.address %> </td>
-                                            <td>
-                                                <% if (user.block == true) { %>
-                                                    <a href="/admin/unblockuser/<%=  user._id %> " class="btn btn-success">unblock</a>
-                                                <% } else { %>
-                                                    <a href="/admin/blockuser/<%=  user._id %> " class="btn btn-primary">block</a>
-                                                <% } %>
-    
-                                                <a href="/admin/deleteuser/<%=  user._id %> " class="btn btn-danger">delete</a>
-                                            </td>
-                                        </tr>
-                                    <% }) %>
-                                <% } else { %>
-                                    <tr>
-                                        <td>No Account Created</td>
-                                    </tr>
-                                <% } %>
-                            </tbody>
-                        </table>
-                    </div>
+        <div class="row mt-2">
+            <div class="col-md-3">
+                <div>
+                    <h4>Total Users</h4>
+                    <p><%= users %></p>
                 </div>
             </div>
-            <!-- small screen end -->
-
+            <div class="col-md-3">
+                <div>
+                    <h4>Total Sellers</h4>
+                    <p><%= sellers %></p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <h4>Total Products</h4>
+                    <p><%= tproduct %></p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <h4>Total Order</h4>
+                    <p><%= order %></p>
+                </div>
+            </div>
         </div>
-        <!-- <div id="tab3" class="tab-content"> -->
 
-            <!-- <div class=" mt-2 d-none d-md-flex">
-                <div class="container">
-                    <div class="table-responsive">
-
-                        <h4>Total number of Uploaded Products: </h4>
-                        <table class="table table-striped table-bordered">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th scope="col">Product Name</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Availability</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>adidas shoe</td>
-                                    <td>canvas</td>
-                                    <td>23 pieces</td>
-                                    <td>$57</td>
-                                    <td>
-                                        <button class="btn btn-danger">delete</button>
-                                        <button class="btn btn-danger">block</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+        <div class="row mt-5">
+            <h2>LOGISTICS SUMMARY</h2>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-3">
+                <div>
+                    <h4>Total Sold Products</h4>
+                    <p><%= tsproduct %></p>
                 </div>
-
-            </div> -->
-
-            <!-- small screen -->
-
-            <!-- small screen -->
-            <!-- <div class="row mt-3 d-flex d-md-none">
-                <div class="container">
-                    <b>Total number of Uploaded Products: </b>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th scope="col">Product Name</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Availability</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>adidas shoe</td>
-                                    <td>canvas</td>
-                                    <td>23 pieces</td>
-                                    <td>$57</td>
-                                    <td>
-                                        <button class="btn btn-danger">delete</button>
-                                        <button class="btn btn-danger ">block</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <h4>Total Amount</h4>
+                    <p><s>N</s><%= tamount %></p>
                 </div>
-            </div> -->
-            <!-- small screen end -->
-
-        <!-- </div> -->
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <h4>Pending Transaction</h4>
+                    <p><s>N</s><%= pamount %></p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <h4>Pending Order</h4>
+                    <p><%= porder %></p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <%- include("partials/footer.ejs") %>
