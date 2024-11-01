@@ -13,35 +13,37 @@
         </div>
     </section>
     <div class="tab-header justify-content-center flex-fill mt-4">
-        <a href="/selller/orders"><button class="tab-button active">Active</button></a>
-        <a href="/selller/completedorders"><button class="tab-button">Completed</button></a>
+        <a href="activeorder"><button class="tab-button">Active</button></a>
+        <a href="completedorder"><button class="tab-button active">Completed</button></a>
     </div>
-    <div class="container">
+    <div class="container mt-5">
         <div class="row text-center mt-2">
-            <h4>Customers Active Orders</h4>
+            <h4>My Completed Order</h4>
         </div>
         <div class="row mt-3">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-striped">
                     <tr>
                         <th>S/N</th>
-                        <th>Email</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Phone Number</th>
+                        <th>Reference</th>
                         <th>Amount Paid</th>
+                        <th>Order Status</th>
                         <th>Action</th>
                     </tr>
-                    <% if(filteredOrders && filteredOrders.length > 0){ %>
-                        <% filteredOrders.forEach((order, index)=> { %>
+                    <% if(orders && orders.length > 0){ %>
+                        <% orders.forEach((order, index)=> { %>
                             <tr>
                                 <td><%= index += 1 %></td>
-                                <td><%= order.email %></td>
-                                <td><%= order.fName %></td>
-                                <td><%= order.lName %></td>
-                                <td><%= order.phone %></td>
+                                <td><%= order.reference %></td>
                                 <td>$<%= order.cartamount %></td>
-                                <td><a href="/seller/viewSingleorder/<%= order._id %>" class="btn btn-primary">View Order</a></td>
+                                <td>
+                                    <% if(order.status == false){ %>
+                                        <span class="badge bg-warning">Pending</span>
+                                    <% } else if(order.status == true){ %>
+                                        <span class="badge bg-success">Completed</span>
+                                    <% } %>
+                                </td>
+                                <td><a href="/viewSingleorder/<%= order._id %>" class="btn btn-primary">View Order</a></td>
                             </tr>
 
                         <% }) %>
