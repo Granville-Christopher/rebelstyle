@@ -14,8 +14,8 @@
     </section>
 
     <div class="tab-header justify-content-center flex-fill mt-4">
-        <a href="/admin/vieworders"><button class="tab-button active">Active</button></a>
-        <a href="/admin/completedorders"><button class="tab-button">Completed</button></a>
+        <a href="/admin/vieworders"><button class="tab-button">Active</button></a>
+        <a href="/admin/completedorders"><button class="tab-button active">Completed</button></a>
     </div>
     <div class="container mt-5">
         <div class="row text-center mt-2">
@@ -38,7 +38,7 @@
                             <tr>
                                 <td><%= index += 1 %></td>
                                 <td><%= order.email %></td>
-                                <td><%= order.fName %> <%= order.fName %></td>
+                                <td><%= order.fName %> <%= order.lName %></td>
                                 <td><%= order.phone %></td>
                                 <td>$<%= order.cartamount %></td>
                                 <td>

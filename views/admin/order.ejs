@@ -58,11 +58,18 @@
                         <span class="fw-bold text-danger">Pending</span>
                     <% } %>
                 </p><br>
+                <p><b>Mark / Unmark order as Paid <br>
+                    <% if (order.paid == false){ %>                    
+                        <a href="/admin/updateOrder/<%= order._id %>?type=paid" class="btn btn-primary">Mark Order</a>
+                    <% } else { %>
+                        <a href="/admin/updateOrder2/<%= order._id %>?type=paid" class="btn btn-danger">Unmark Order</a>
+                    <% } %>
+                </p><br>
                 <p><b>Mark / Unmark order as Completed <br>
                     <% if (order.status == false){ %>                    
-                        <a href="/admin/updateOrder/<%= order._id %>" class="btn btn-success">Mark Order</a>
+                        <a href="/admin/updateOrder/<%= order._id %>?type=status" class="btn btn-success">Mark Order</a>
                     <% } else { %>
-                        <a href="/admin/updateOrder2/<%= order._id %>" class="btn btn-danger">Unmark Order</a>
+                        <a href="/admin/updateOrder2/<%= order._id %>?type=status" class="btn btn-danger">Unmark Order</a>
                     <% } %>
                 </p><br>
             </div>

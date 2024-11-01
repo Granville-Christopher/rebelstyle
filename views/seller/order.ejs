@@ -47,6 +47,13 @@
                 <p><b>Zip Code:</b> <%= order.zip %></p>
                 <p><b>City:</b> <%= order.city %></p>
                 <p><b>Contact Address:</b> <br><%= order.address %></p>
+                <p><b>Payment Status:</b>
+                    <% if (order.paid && order.paid == true){ %>                    
+                        <span class="badge bg-success">paid</span>
+                    <% } else { %>
+                        <span class="badge bg-warning text-dark">incomplete</span>
+                    <% } %>
+                </p><br>
                 <p><b>Mark / Unmark order as Completed <br>
                     <% if (order.sellerStatus && order.sellerStatus == true){ %>                    
                         <a href="/seller/updateOrder2/<%= order._id %>" class="btn btn-danger">Unmark Order</a>
