@@ -1,0 +1,139 @@
+<%- include("partials/header.ejs") %>
+
+
+    <section class="hero collections-hero">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Uploads</li>
+                </ol>
+            </nav>
+            <h1>View and Edit Your Products Here</h1>
+        </div>
+    </section>
+    <style>
+        .seller{
+            margin-top: 100px;
+            padding: 2px;
+            width: 100%;
+        }
+    </style>
+    <div class="tab-container align-items-center">
+        <div class="tab-header justify-content-center flex-fill">
+            <a href="/seller/clothes"><button class="tab-button active">Clothes</button></a>
+            <a href="/seller/shoes"><button class="tab-button">Footwears</button></a>
+            <a href="/seller/accessories"><button class="tab-button">Accessories</button></a>
+        </div>
+
+        <div id="tab1" class="tab-content active">
+            <% if(Clothes){ %>
+                <div class="row mt-5 d-none d-md-flex">
+                    <% Clothes.forEach((product, index) => { %>
+                        <div class="col-md-3 mb-2">
+                            <div class="image-container">
+                                <a href="/cdetails/<%= product._id %>">
+                                    <img src="<%= product.files[0] %>"
+                                        class="img-fluid" alt="...">
+                                </a>
+                                <div class="image-overlay">
+                                    <div class="image-details container">
+                                        <p class="row">
+                                            <!-- <b class="price col-4"><s>N</s><%= product.clothprice %></b>
+                                            <b class="cloth-name col-8"><a href="/cdetails/<%= product._id %>" class="text-light"> <%= product.clothname %></a></b> -->
+                                            <p class="seller"><%= product.clothname %></p>
+                                            <!-- <a href="#" class="seller"><%= product.clothname %></a> -->
+                                        </p>
+                                        <p class="text-light"><s>N</s><%= product.clothprice %></p>
+                                        <!-- <p class="category"><%= product.clothcategory %></p> -->
+                                        <p class="qttb">
+                                            <a href=" /seller/getselleredit/<%=  product._id %>"class=" btn-primary btn text-light">Edit</a>
+                                            <a href="/seller/deleteproduct/<%= product._id %>?type=cloth" class="btn bg-danger text-light">Delete</a>
+
+                                            <% if (product.trending == false) { %>
+                                                <a href="/seller/trendproduct/<%= product._id %>?type=cloth&action=trend" class="btn bg-warning text-light">Trend</a>
+                                            <% } else { %>    
+                                                <a href="/seller/trendproduct/<%= product._id %>?type=cloth&action=untrend" class="btn bg-success text-dark">Untrend</a>
+                                            <% } %>    
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+
+                </div>
+            <% }else{ %>
+                <div class="row mt-5 d-none d-md-flex">
+                    <p>no product in this category</p>
+                </div>
+            <% } %>
+
+            <!-- small screen -->
+            <% if(smallClothes){ %>
+                <div class="row mt-3 d-flex d-md-none">
+                    <% smallClothes.forEach((productChunk, index) => { %>
+                        <div class="row">
+                            <% productChunk.forEach(product => { %>
+                                <div class="col-6">
+                                    <div class="image-container">
+                                        <a href="/cdetails/<%= product._id %>">
+                                            <img src="<%= product.files[0] %>"
+                                                class="img-fluid" alt="...">
+                                        </a>
+                                        <div class="image-overlay carousel-caption">
+                                            <div class=" image-details">
+                                                <p>
+                                                    <b class="price"><s>N</s><%= product.clothprice %></b>
+                                                    <!-- <a href="/sellerprofile/<%= product.sellerId %>" class="seller"><%= product.seller %></a> -->
+                                                </p>
+                                                <b class="cloth-name"><a href="/cdetails/<%= product._id %>" class="text-light"> <%= product.clothname %></a></b>
+                                                <p class="qttb">
+                                                    <a href=" /seller/getselleredit/<%=  product._id %>"class=" btn-primary btn text-light">Edit</a>
+                                                    <a href="/seller/deleteproduct/<%= product._id %>?type=cloth" class="btn bg-danger text-light">Delete</a>
+        
+                                                    <% if (product.trending == false) { %>
+                                                        <a href="/seller/trendproduct/<%= product._id %>?type=cloth&action=trend" class="btn bg-warning text-light">Trend</a>
+                                                    <% } else { %>    
+                                                        <a href="/seller/trendproduct/<%= product._id %>?type=cloth&action=untrend" class="btn bg-success text-dark">Untrend</a>
+                                                    <% } %>    
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+
+                    <% }) %>
+                </div>
+            <% }else{ %>
+                <div class="row mt-3 d-flex d-md-none">
+                    <p>no product available</p>
+                </div>
+            <% } %>
+
+            
+            <!-- end -->
+            <!-- Pagination Links -->
+            <ul class="pagination">
+                <% if (currentPage > 1) { %>
+                    <a href="?page=<%= currentPage - 1 %>">Previous</a>
+                <% } %>
+
+                <% for (let i = startPage; i <= endPage; i++) { %>
+                    <a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>">
+                        <%= i %>
+                    </a>
+                <% } %>
+
+                <% if (currentPage < totalPages) { %>
+                    <a href="?page=<%= currentPage + 1 %>">Next</a>
+                <% } %>
+            </ul>
+        </div>
+        
+    </div>
+
+
+<%- include("partials/footer.ejs") %>

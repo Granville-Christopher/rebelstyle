@@ -1,58 +1,60 @@
 <%- include("partials/header.ejs") %>
 
 
-
     <section class="hero collections-hero">
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Collections</li>
+                    <li class="breadcrumb-item active" aria-current="page">Uploads</li>
                 </ol>
             </nav>
-            <h1>Explore Our Collections</h1>
-            <p>Discover the latest fashion trends and styles</p>
-            <button class="btn btn-outline-white">Shop Now</button>
-            <div class="search-section mt-5" >
-                <form action="/search" method="POST">
-                    <input type="search" name="search" id="search" class="search-input" placeholder="search">
-                    <button> <i class="fas fa-search"></i></button>
-                </form>
-            </div> 
+            <h1>View and Edit Your Products Here</h1>
         </div>
     </section>
-
+    <style>
+        .seller{
+            margin-top: 100px;
+            padding: 2px;
+            width: 50%;
+        }
+    </style>
     <div class="tab-container align-items-center">
         <div class="tab-header justify-content-center flex-fill">
-            <a href="clothescollection"><button class="tab-button">Clothes</button></a>
-            <a href="shoecollection"><button class="tab-button">Footwears</button></a>
-            <a href="accessoriescollection"><button class="tab-button active">Accessories</button></a>
+            <a href="/seller/clothes"><button class="tab-button">Clothes</button></a>
+            <a href="/seller/shoes"><button class="tab-button">Footwears</button></a>
+            <a href="/seller/accessories"><button class="tab-button active">Accessories</button></a>
         </div>
 
-        
-        <div id="tab3" class="tab-content active">
+        <div id="tab1" class="tab-content active">
             <% if(Accessories){ %>
                 <div class="row mt-5 d-none d-md-flex">
                     <% Accessories.forEach((product, index) => { %>
                         <div class="col-md-3 mb-2">
                             <div class="image-container">
-                                <a href="/adetails/<%= product._id %>">
+                                <a href="/cdetails/<%= product._id %>">
                                     <img src="<%= product.files[0] %>"
                                         class="img-fluid" alt="...">
                                 </a>
                                 <div class="image-overlay">
                                     <div class="image-details container">
                                         <p class="row">
-                                            <b class="price col-4"><s>N</s><%= product.accessoryprice %></b>
-                                            <b class="cloth-name col-7"><a href="/adetails/<%= product._id %>" class="text-light"> <%= product.accessoryname %></a></b>
-                                            <a href="/sellerprofile/<%= product.sellerId %>" class="seller col-12"><%= product.seller %></a>
+                                            <!-- <b class="price col-4"><s>N</s><%= product.accessoryprice %></b>
+                                            <b class="cloth-name col-8"><a href="/cdetails/<%= product._id %>" class="text-light"> <%= product.accessoryname %></a></b> -->
+                                            <p class="seller"><%= product.accessoryname %></p>
+                                            <!-- <a href="#" class="seller"><%= product.accessoryname %></a> -->
                                         </p>
-                                        <p class="category"><%= product.accessorycategory %></p>
+                                        <p class="text-light"><s>N</s><%= product.accessoryprice %></p>
+                                        <!-- <p class="category"><%= product.accessorycategory %></p> -->
                                         <p class="qttb">
-                                            <b class="quantity">qty: <input type="number" value="1" name="" id="qty-<%= product._id %>"></b>
-                                            <a class="add" onclick="addToCart('<%= product._id %>', '<%= product.accessoryname %>', '<%= product.accessoryprice %>', '<%= product.files[0] %>', '<%= product.seller %>', '<%= product.sellerId %>')">
-                                                <i class="fas fa-shopping-cart"></i>
-                                            </a>
+                                            <a href=" /seller/getselleredit/<%=  product._id %>"class=" btn-primary btn text-light">Edit</a>
+                                            <a href="/seller/deleteproduct/<%= product._id %>?type=cloth" class="btn bg-danger text-light">Delete</a>
+
+                                            <% if (product.trending == false) { %>
+                                                <a href="/seller/trendproduct/<%= product._id %>?type=cloth&action=trend" class="btn bg-warning text-light">Trend</a>
+                                            <% } else { %>    
+                                                <a href="/seller/trendproduct/<%= product._id %>?type=cloth&action=untrend" class="btn bg-success text-dark">Untrend</a>
+                                            <% } %>    
                                         </p>
                                     </div>
                                 </div>
@@ -75,7 +77,7 @@
                             <% productChunk.forEach(product => { %>
                                 <div class="col-6">
                                     <div class="image-container">
-                                        <a href="/adetails/<%= product._id %>">
+                                        <a href="/cdetails/<%= product._id %>">
                                             <img src="<%= product.files[0] %>"
                                                 class="img-fluid" alt="...">
                                         </a>
@@ -83,22 +85,24 @@
                                             <div class=" image-details">
                                                 <p>
                                                     <b class="price"><s>N</s><%= product.accessoryprice %></b>
-                                                    <a href="/sellerprofile/<%= product.sellerId %>" class="seller"><%= product.seller %></a>
+                                                    <!-- <a href="/sellerprofile/<%= product.sellerId %>" class="seller"><%= product.seller %></a> -->
                                                 </p>
-                                                <b class="cloth-name"><a href="/adetails/<%= product._id %>" class="text-light"> <%= product.accessoryname %></a></b>
-                                                <p class="category"><%= product.accessorycategory %></p>
+                                                <b class="cloth-name"><a href="/cdetails/<%= product._id %>" class="text-light"> <%= product.accessoryname %></a></b>
                                                 <p class="qttb">
-                                                    <b class="quantity">qty:<br><input type="number" value="1" name="" id="qty-<%= product._id %>"></b>
-                                                    <a class="add" onclick="addToCart('<%= product._id %>', '<%= product.accessoryname %>', '<%= product.accessoryprice %>', '<%= product.files[0] %>', '<%= product.seller %>', '<%= product.sellerId %>')">
-                                                        <i class="fas fa-shopping-cart"></i>
-                                                    </a>
+                                                    <a href=" /seller/getselleredit/<%=  product._id %>"class=" btn-primary btn text-light">Edit</a>
+                                                    <a href="/seller/deleteproduct/<%= product._id %>?type=cloth" class="btn bg-danger text-light">Delete</a>
+        
+                                                    <% if (product.trending == false) { %>
+                                                        <a href="/seller/trendproduct/<%= product._id %>?type=cloth&action=trend" class="btn bg-warning text-light">Trend</a>
+                                                    <% } else { %>    
+                                                        <a href="/seller/trendproduct/<%= product._id %>?type=cloth&action=untrend" class="btn bg-success text-dark">Untrend</a>
+                                                    <% } %>    
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             <% }) %>
-                            
                         </div>
 
                     <% }) %>
@@ -127,8 +131,7 @@
                     <a href="?page=<%= currentPage + 1 %>">Next</a>
                 <% } %>
             </ul>
-        </div>        
-        
+        </div>
     </div>
 
 
