@@ -46,7 +46,7 @@
                                         </p>
                                         <p class="qttb">
                                             <b class="quantity">qty: 
-                                                <input type="number" value="1" name="" id="qty">
+                                                <input type="number" value="1" name="" id="qty-<%= product._id %>">
                                             </b>
                                             <a class="add" onclick="addToCart('<%= product._id %>', '<%= product[`${productType}name`] %>', '<%= product[`${productType}price`] %>', '<%= product.files[0] %>', '<%= product.seller %>', '<%= product.sellerId %>')">
                                                 <i class="fas fa-shopping-cart"></i>

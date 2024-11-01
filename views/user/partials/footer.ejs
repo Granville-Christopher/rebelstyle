@@ -65,9 +65,10 @@
     }
 
     function addToCart(id, name, price, image, seller, sellerId) {
-        
+
         // Get the current cart from sessionStorage or initialize it
         let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+        let quan = document.getElementById(`qty-${id}`).value
         
         // Check if the item is already in the cart
         const existingItemIndex = cart.findIndex(item => item.id === id);
@@ -82,7 +83,7 @@
                 name: name,
                 price: price,
                 image: image,
-                quantity: 1,
+                quantity: quan,
                 seller: seller,
                 sellerId: sellerId
             });
