@@ -81,45 +81,40 @@
             <% if(smallTShoes){ %>
                 <div class="row mt-3 d-flex d-md-none">
                     <% smallTShoes.forEach((productChunk, index)=> { %>
-                        <div class="row">
-                            <% productChunk.forEach(product=> { %>
-                                <div class="col-6">
-                                    <div class="image-container">
-                                        <a href="/sdetails/<%= product._id %>">
-                                            <img src="<%= product.files[0] %>"
-                                                class="img-fluid" alt="...">
-                                        </a>
-                                        <div class="image-overlay carousel-caption">
-                                            <div class=" image-details">
-                                                <p>
-                                                    <b class="price"><s>N</s>
-                                                        <%= product.shoeprice %>
-                                                    </b>
-                                                    <a href="/sellerprofile/<%= product.sellerId %>" class="seller">
-                                                        <%= product.seller %>
-                                                    </a>
-                                                </p>
-                                                <b class="cloth-name">
-                                                    <a href="/sdetails/<%= product._id %>" class="text-light"> <%= product.shoename %></a>
-                                                </b>
-                                                <p class="category">
-                                                    <%= product.shoecategory %>
-                                                </p>
-                                                <p class="qttb">
-                                                    <b class="quantity">qty:<br><input
-                                                            type="number" value="1" name=""
-                                                            id="qty-<%= product._id %>"></b>
-                                                    <a class="add"
-                                                        onclick="addToCart('<%= product._id %>', '<%= product.shoename %>', '<%= product.shoeprice %>', '<%= product.files[0] %>', '<%= product.seller %>', '<%= product.sellerId %>')">
-                                                        <i class="fas fa-shopping-cart"></i>
-                                                    </a>
-                                                </p>
+                        <div class="container">
+                            <div class="row">
+                                <% productChunk.forEach(product=> { %>
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <a href="/sdetails/<%= product._id %>">
+                                                <img src="<%= product.files[0] %>"
+                                                    class="img-fluid" alt="...">
+                                            </a>
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price"><s>N</s><%= product.shoeprice %></b>
+                                                        <a href="/sellerprofile/<%= product.sellerId %>" class="seller"><%= product.seller %></a>
+                                                    </p>
+                                                    <b class="cloth-name">
+                                                    <a href="/sdetails/<%= product._id %>" class="text-light"> 
+                                                        <%= (product.shoename).length > 7 
+                                                        ? (product.shoename).slice(0, 13) + '...' 
+                                                        : (product.shoename) %>
+                                                    </a></b>
+                                                    <p class="category"><%= product.shoecategory %></p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty:<br><input type="number" value="1" name="" id="qty-<%= product._id %>"></b>
+                                                        <a class="add" onclick="addToCart('<%= product._id %>', '<%= product.shoename %>', '<%= product.shoeprice %>', '<%= product.files[0] %>', '<%= product.seller %>', '<%= product.sellerId %>')">
+                                                            <i class="fas fa-shopping-cart"></i>
+                                                        </a>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            <% }) %>
-
+                                <% }) %>
+                            </div>
                         </div>
 
                     <% }) %>

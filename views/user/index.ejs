@@ -86,7 +86,9 @@
                                                                 /adetails/<%= product._id %>
                                                             <% } %>
                                                         " class="text-light"> 
-                                                        <%= product.clothname || product.shoename || product.accessoryname %>
+                                                        <%= (product.clothname || product.shoename || product.accessoryname).length > 7 
+                                                        ? (product.clothname || product.shoename || product.accessoryname).slice(0, 13) + '...' 
+                                                        : (product.clothname || product.shoename || product.accessoryname) %>
                                                         </a>
                                                     </b>
                                                     <p class="category">
@@ -176,7 +178,9 @@
                                                                 /adetails/<%= product._id %>
                                                             <% } %>
                                                         " class="text-light"> 
-                                                        <%= product.clothname || product.shoename || product.accessoryname %>
+                                                        <%= (product.clothname || product.shoename || product.accessoryname).length > 7 
+        ? (product.clothname || product.shoename || product.accessoryname).slice(0, 13) + '...' 
+        : (product.clothname || product.shoename || product.accessoryname) %>
                                                         </a>
                                                     </b>
                                                     <p class="category">

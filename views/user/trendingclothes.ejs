@@ -13,12 +13,12 @@
             <h1>Discover the Hottest Trends of the Season</h1>
             <p>Curated Styles That Define Today's Fashion Scene</p>
             <button class="btn btn-outline-white">Shop the Trends</button>
-            <div class="search-section mt-5">
+            <div class="search-section mt-5" >
                 <form action="/search" method="POST">
                     <input type="search" name="search" id="search" class="search-input" placeholder="search">
                     <button> <i class="fas fa-search"></i></button>
                 </form>
-            </div>
+            </div> 
         </div>
     </section>
 
@@ -81,45 +81,40 @@
             <% if(smallTClothes){ %>
                 <div class="row mt-3 d-flex d-md-none">
                     <% smallTClothes.forEach((productChunk, index)=> { %>
-                        <div class="row">
-                            <% productChunk.forEach(product=> { %>
-                                <div class="col-6">
-                                    <div class="image-container">
-                                        <a href="/cdetails/<%= product._id %>">
-                                            <img src="<%= product.files[0] %>"
-                                                class="img-fluid" alt="...">
-                                        </a>
-                                        <div class="image-overlay carousel-caption">
-                                            <div class=" image-details">
-                                                <p>
-                                                    <b class="price"><s>N</s>
-                                                        <%= product.clothprice %>
-                                                    </b>
-                                                    <a href="/sellerprofile/<%= product.sellerId %>" class="seller">
-                                                        <%= product.seller %>
-                                                    </a>
-                                                </p>
-                                                <b class="cloth-name">
-                                                    <a href="/cdetails/<%= product._id %>" class="text-light"> <%= product.clothname %></a>
-                                                </b>
-                                                <p class="category">
-                                                    <%= product.clothcategory %>
-                                                </p>
-                                                <p class="qttb">
-                                                    <b class="quantity">qty:<br><input
-                                                            type="number" value="1" name=""
-                                                            id="qty-<%= product._id %>"></b>
-                                                    <a class="add"
-                                                        onclick="addToCart('<%= product._id %>', '<%= product.clothname %>', '<%= product.clothprice %>', '<%= product.files[0] %>', '<%= product.seller %>', '<%= product.sellerId %>')">
-                                                        <i class="fas fa-shopping-cart"></i>
-                                                    </a>
-                                                </p>
+                        <div class="container">
+                            <div class="row">
+                                <% productChunk.forEach(product=> { %>
+                                    <div class="col-6">
+                                        <div class="image-container">
+                                            <a href="/cdetails/<%= product._id %>">
+                                                <img src="<%= product.files[0] %>"
+                                                    class="img-fluid" alt="...">
+                                            </a>
+                                            <div class="image-overlay carousel-caption">
+                                                <div class=" image-details">
+                                                    <p>
+                                                        <b class="price"><s>N</s><%= product.clothprice %></b>
+                                                        <a href="/sellerprofile/<%= product.sellerId %>" class="seller"><%= product.seller %></a>
+                                                    </p>
+                                                    <b class="cloth-name">
+                                                    <a href="/cdetails/<%= product._id %>" class="text-light"> 
+                                                        <%= (product.clothname).length > 7 
+                                                        ? (product.clothname).slice(0, 13) + '...' 
+                                                        : (product.clothname) %>
+                                                    </a></b>
+                                                    <p class="category"><%= product.clothcategory %></p>
+                                                    <p class="qttb">
+                                                        <b class="quantity">qty:<br><input type="number" value="1" name="" id="qty-<%= product._id %>"></b>
+                                                        <a class="add" onclick="addToCart('<%= product._id %>', '<%= product.clothname %>', '<%= product.clothprice %>', '<%= product.files[0] %>', '<%= product.seller %>', '<%= product.sellerId %>')">
+                                                            <i class="fas fa-shopping-cart"></i>
+                                                        </a>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            <% }) %>
-
+                                <% }) %>
+                            </div>
                         </div>
 
                     <% }) %>
