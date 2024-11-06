@@ -48,13 +48,13 @@
                                         <p class="text-light"><s>N</s><%= product.shoeprice %></p>
                                         <!-- <p class="category"><%= product.shoecategory %></p> -->
                                         <p class="qttb">
-                                            <a href=" /seller/getselleredit/<%=  product._id %>"class=" btn-primary btn text-light">Edit</a>
-                                            <a href="/seller/deleteproduct/<%= product._id %>?type=cloth" class="btn bg-danger text-light">Delete</a>
+                                            <a href=" /seller/getsellereditshoe/<%=  product._id %>"class=" btn-primary btn text-light">Edit</a>
+                                            <a href="/seller/deleteproduct/<%= product._id %>?type=shoe" class="btn bg-danger text-light">Delete</a>
 
                                             <% if (product.trending == false) { %>
-                                                <a href="/seller/trendproduct/<%= product._id %>?type=cloth&action=trend" class="btn bg-warning text-light">Trend</a>
+                                                <a href="/seller/trendproduct/<%= product._id %>?type=shoe&action=trend" class="btn bg-warning text-light">Trend</a>
                                             <% } else { %>    
-                                                <a href="/seller/trendproduct/<%= product._id %>?type=cloth&action=untrend" class="btn bg-success text-dark">Untrend</a>
+                                                <a href="/seller/trendproduct/<%= product._id %>?type=shoe&action=untrend" class="btn bg-success text-dark">Untrend</a>
                                             <% } %>    
                                         </p>
                                     </div>
@@ -90,13 +90,13 @@
                                                 </p>
                                                 <b class="cloth-name"><a href="/cdetails/<%= product._id %>" class="text-light"> <%= product.shoename %></a></b>
                                                 <p class="qttb">
-                                                    <a href=" /seller/getselleredit/<%=  product._id %>"class=" btn-primary btn text-light">Edit</a>
-                                                    <a href="/seller/deleteproduct/<%= product._id %>?type=cloth" class="btn bg-danger text-light">Delete</a>
+                                                    <a href=" /seller/getsellereditshoe/<%=  product._id %>"class=" btn-primary btn text-light">Edit</a>
+                                                    <a href="/seller/deleteproduct/<%= product._id %>?type=shoe" class="btn bg-danger text-light">Delete</a>
         
                                                     <% if (product.trending == false) { %>
-                                                        <a href="/seller/trendproduct/<%= product._id %>?type=cloth&action=trend" class="btn bg-warning text-light">Trend</a>
+                                                        <a href="/seller/trendproduct/<%= product._id %>?type=shoe&action=trend" class="btn bg-warning text-light">Trend</a>
                                                     <% } else { %>    
-                                                        <a href="/seller/trendproduct/<%= product._id %>?type=cloth&action=untrend" class="btn bg-success text-dark">Untrend</a>
+                                                        <a href="/seller/trendproduct/<%= product._id %>?type=shoe&action=untrend" class="btn bg-success text-dark">Untrend</a>
                                                     <% } %>    
                                                 </p>
                                             </div>
