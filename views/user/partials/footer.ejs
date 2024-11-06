@@ -69,6 +69,44 @@
         // Get the current cart from sessionStorage or initialize it
         let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
         let quan = document.getElementById(`qty-${id}`).value
+
+        alert(quan) 
+        return false;
+        
+        // Check if the item is already in the cart
+        const existingItemIndex = cart.findIndex(item => item.id === id);
+        
+        if (existingItemIndex !== -1) {
+            // If item exists, increase the quantity
+            cart[existingItemIndex].quantity += 1;
+        } else {
+            // If item doesn't exist, add it with initial quantity of 1
+            cart.push({
+                id: id,
+                name: name,
+                price: price,
+                image: image,
+                quantity: quan,
+                seller: seller,
+                sellerId: sellerId
+            });
+        }
+        
+        // Save the updated cart back to sessionStorage
+        sessionStorage.setItem('cart', JSON.stringify(cart));
+        
+        // Optionally, show a message to the user
+        showNotification('Item added to cart');
+    }
+
+    function addToCart2(id, name, price, image, seller, sellerId) {
+
+        // Get the current cart from sessionStorage or initialize it
+        let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+        let quan = document.getElementById(`qty2-${id}`).value
+
+        alert(quan)
+        return false;
         
         // Check if the item is already in the cart
         const existingItemIndex = cart.findIndex(item => item.id === id);
