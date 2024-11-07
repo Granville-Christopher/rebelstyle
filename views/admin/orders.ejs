@@ -30,6 +30,7 @@
                         <th>Full Name</th>
                         <th>Phone Number</th>
                         <th>Amount Paid</th>
+                        <th>Proof</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -40,7 +41,8 @@
                                 <td><%= order.email %></td>
                                 <td><%= order.fName %> <%= order.fName %></td>
                                 <td><%= order.phone %></td>
-                                <td>$<%= order.cartamount %></td>
+                                <td><%= order.cartamount %></td>
+                                <td><a href="<%= order.proof %>"><img src="<%= order.proof || '' %>" width="50" height="50" alt=""></a></td>
                                 <td>
                                     <% if(order.status == false){ %>
                                         <span class="badge bg-warning">Pending</span>
