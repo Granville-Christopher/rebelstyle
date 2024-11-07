@@ -69,9 +69,6 @@
         // Get the current cart from sessionStorage or initialize it
         let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
         let quan = document.getElementById(`qty-${id}`).value
-
-        alert(quan) 
-        return false;
         
         // Check if the item is already in the cart
         const existingItemIndex = cart.findIndex(item => item.id === id);
@@ -104,9 +101,6 @@
         // Get the current cart from sessionStorage or initialize it
         let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
         let quan = document.getElementById(`qty2-${id}`).value
-
-        alert(quan)
-        return false;
         
         // Check if the item is already in the cart
         const existingItemIndex = cart.findIndex(item => item.id === id);

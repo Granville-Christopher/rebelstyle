@@ -108,20 +108,31 @@
                 </div>
 
                 <div class="form-group mt-3">
-                    <p>Please Pay The Above Amount To The Account Below And Click On Place Order Button For Your Order To Be Processed. <br><b>Note:</b>Failure To Complete Payment Will Result To Unprocessed Order</p>
-                    <p><b>Bank Name:</b> <%= bank.bankName %></p>
-                    <p><b>Account Name:</b> <%= bank.bankAccount %></p>
-                    <p><b>Account Number:</b> <%= bank.bankAccountNumber %></p>
+                    <p style="font-size: 12px;">Please Pay The Above Amount To The Account Below, Submit Payment Proof And Click On Place Order Button For Your Order To Be Processed. <br><br><b>Note:</b> Failure To Complete Payment Will Result To Unprocessed Order</p>
+                    <p style="font-size: 12px;"><b>Bank Name:</b> <%= bank.bankName %></p>
+                    <p style="font-size: 12px;"><b>Account Name:</b> <%= bank.bankAccount %></p>
+                    <p style="font-size: 12px;"><b>Account Number:</b> <%= bank.bankAccountNumber %></p>
+                </div>
+
+                <div class="form-group mt-4 mb-4">
+                    <p style="font-size: 12px;" id="msg"></p>
                 </div>
 
                 <textarea style="display: none;" name="" id="cartdetails" class="form-control"></textarea>
 
+                <div class="form-group mt-4 mb-4">
+                    <label for="">upload proof</label>
+                    <input type="file" id="file" class="form-control" >
+                </div>
+
                 <% if(user != ''){ %>
-                    <button class="mt-2 iiiiii btn" type="submit" onclick="submitOrder()">Place Order</button>
+                    <button class="mt-2 iiiiii btn" type="submit" id="place" onclick="submitOrder()">Place Order</button>
                 <% }else{ %>
                     <a href="/login" class="mt-2 iiiiii btn" type="submit">Login Now</a>
 
                 <% } %>
+
+                <br><br>
             </div>
 
 
@@ -204,7 +215,38 @@
     }
 
     function submitOrder(){
+        let place = document.getElementById('place')
         let formData = new FormData();
+
+        place.innerHTML = 'Processing...'
+        place.disabled = true
+
+        let msg = document.getElementById('msg')
+        let proof = document.getElementById('file').files[0];
+
+        if(!proof){
+            msg.innerHTML = 'proof is required'
+            msg.style.color = 'red'
+            place.innerHTML = 'Place Order'
+            place.disabled = false
+            setTimeout(() => {
+                msg.innerHTML = ''
+            }, 3000);
+            return false
+        }
+
+        // Check if the file is an image
+        const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/heic'];
+        if (!validImageTypes.includes(proof.type)) {
+            msg.innerHTML = 'Only image files are allowed (JPG, JPEG, PNG, HEIC)';
+            msg.style.color = 'red';
+            place.innerHTML = 'Place Order'
+            place.disabled = false
+            setTimeout(() => {
+                msg.innerHTML = '';
+            }, 3000);
+            return false;
+        }
 
         formData.append('fName', document.getElementById('Fname').value.trim());
         formData.append('lName', document.getElementById('Lname').value.trim());
@@ -217,6 +259,7 @@
         formData.append('cartamount', document.getElementById('cartamount').value.trim());
         formData.append('cartdetails', document.getElementById('cartdetails').value.trim());
         formData.append('reference', `Ref-${Date.now()}`);
+        formData.append('file', proof);
 
         const endpoint = `/submitorder`;
 
@@ -227,21 +270,36 @@
         .then((response) => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
-                showNotification('error processing request');
             }
             return response.json();
         })
         .then((data) => {
             if (data.msg === 'order created') {
                 sessionStorage.setItem('cart', JSON.stringify([]));
+                msg.innerHTML = 'order created';
+                msg.style.color = 'green';
+                place.innerHTML = 'Place Order'
+                place.disabled = false
+
+                setTimeout(() => {
+                    msg.innerHTML = '';
+                }, 3000);
+
                 showNotification(data.msg);
                 calculateCartTotal()
                 loadCartItems();
             } else {
                 showNotification(data.msg);
+                place.innerHTML = 'Place Order'
+                place.disabled = false
             }
         })
-        .catch((err) => console.error('Fetch error:', err));
+        .catch(err => {
+            console.error('Fetch error:', err);
+            showNotification('Error processing request');
+            place.innerHTML = 'Place Order'
+            place.disabled = false
+        });
     }
 
 
