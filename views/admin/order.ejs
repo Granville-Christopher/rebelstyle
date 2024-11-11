@@ -41,6 +41,10 @@
             </div>
             <div class="col-md-4">
                 <p><b>Order Reference:</b> <%= order.reference %></p>
+                <p>
+                    <b>Payment Proof:</b><br>
+                    <a href="<%= order.proof %>"><img src="<%= order.proof || '' %>" width="250" height="200" alt=""></a>
+                </p>
                 <p><b>First Name:</b> <%= order.fName %></p>
                 <p><b>Last Name:</b> <%= order.lName %></p>
                 <p><b>First Name:</b> <%= order.fName %></p>
