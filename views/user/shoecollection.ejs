@@ -44,12 +44,12 @@
                                         <p class="row">
                                             <b class="price col-4"><s>N</s><%= product.shoeprice %></b>
                                             <b class="cloth-name col-8"><a href="/sdetails/<%= product._id %>" class="text-light"> <%= product.shoename %></a></b>
-                                            <a href="/sellerprofile/<%= product.sellerId %>" class="seller col-12"><%= product.seller %></a>
+                                            <a href="/sellerprofile/<%= product.sellerId %>" class="seller col-12"><%= `${product.seller.Fname} ${product.seller.Lname}` %></a>
                                         </p>
                                         <p class="category"><%= product.shoecategory %></p>
                                         <p class="qttb">
                                             <b class="quantity">qty: <input type="number" value="1" name="" id="qty-<%= product._id %>"></b>
-                                            <a class="add" onclick="addToCart('<%= product._id %>', '<%= product.shoename %>', '<%= product.shoeprice %>', '<%= product.files[0] %>', '<%= product.seller %>', '<%= product.sellerId %>')">
+                                            <a class="add" onclick="addToCart('<%= product._id %>', '<%= product.shoename %>', '<%= product.shoeprice %>', '<%= product.files[0] %>', '<%= `${product.seller.Fname} ${product.seller.Lname}` %>', '<%= product.sellerId %>')">
                                                 <i class="fas fa-shopping-cart"></i>
                                             </a>
                                         </p>
@@ -83,7 +83,7 @@
                                                 <div class=" image-details">
                                                     <p>
                                                         <b class="price"><s>N</s><%= product.shoeprice %></b>
-                                                        <a href="/sellerprofile/<%= product.sellerId %>" class="seller"><%= product.seller %></a>
+                                                        <a href="/sellerprofile/<%= product.sellerId %>" class="seller"><%= `${product.seller.Fname} ${product.seller.Lname}` %></a>
                                                     </p>
                                                     <b class="cloth-name">
                                                     <a href="/sdetails/<%= product._id %>" class="text-light"> 
@@ -94,7 +94,7 @@
                                                     <p class="category"><%= product.shoecategory %></p>
                                                     <p class="qttb">
                                                         <b class="quantity">qty:<br><input type="number" value="1" name="" id="qty2-<%= product._id %>"></b>
-                                                        <a class="add" onclick="addToCart2('<%= product._id %>', '<%= product.shoename %>', '<%= product.shoeprice %>', '<%= product.files[0] %>', '<%= product.seller %>', '<%= product.sellerId %>')">
+                                                        <a class="add" onclick="addToCart2('<%= product._id %>', '<%= product.shoename %>', '<%= product.shoeprice %>', '<%= product.files[0] %>', '<%= `${product.seller.Fname} ${product.seller.Lname}` %>', '<%= product.sellerId %>')">
                                                             <i class="fas fa-shopping-cart"></i>
                                                         </a>
                                                     </p>

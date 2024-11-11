@@ -73,7 +73,7 @@
                                                             <%= product.clothprice || product.shoeprice || product.accessoryprice %>
                                                         </b>
                                                         <a href="/sellerprofile/<%= product.sellerId %>" class="seller">
-                                                            <%= product.seller %>
+                                                            <%= `${product.seller.Fname} ${product.seller.Lname}` %>
                                                         </a>
                                                     </p>
                                                     <b class="cloth-name">
@@ -98,7 +98,7 @@
                                                         <b class="quantity">qty:<br><input
                                                                 type="number" value="1"
                                                                 name="" id="qty2-<%= product._id %>"></b>
-                                                        <a class="add" onclick="addToCart2('<%= product._id %>', '<%= product.clothname || product.shoename || product.accessoryname %>', '<%= product.clothprice || product.shoeprice || product.accessoryprice %>', '<%= product.files[0] %>', '<%= product.seller %>', '<%= product.sellerId %>')">
+                                                        <a class="add" onclick="addToCart2('<%= product._id %>', '<%= product.clothname || product.shoename || product.accessoryname %>', '<%= product.clothprice || product.shoeprice || product.accessoryprice %>', '<%= product.files[0] %>', '<%= `${product.seller.Fname} ${product.seller.Lname}` %>', '<%= product.sellerId %>')">
                                                             <i
                                                                 class="fas fa-shopping-cart"></i>
                                                         </a>
@@ -165,7 +165,7 @@
                                                             <%= product.clothprice || product.shoeprice || product.accessoryprice %>
                                                         </b>
                                                         <a href="/sellerprofile/<%= product.sellerId %>" class="seller">
-                                                            <%= product.seller %>
+                                                            <%= `${product.seller.Fname} ${product.seller.Lname}` %>
                                                         </a>
                                                     </p>
                                                     <b class="cloth-name">
@@ -190,7 +190,7 @@
                                                         <b class="quantity">qty:<br><input
                                                                 type="number" value="1"
                                                                 name="" id="qty2-<%= product._id %>"></b>
-                                                        <a class="add" onclick="addToCart2('<%= product._id %>', '<%= product.clothname || product.shoename || product.accessoryname %>', '<%= product.clothprice || product.shoeprice || product.accessoryprice %>', '<%= product.files[0] %>', '<%= product.seller %>', '<%= product.sellerId %>')">
+                                                        <a class="add" onclick="addToCart2('<%= product._id %>', '<%= product.clothname || product.shoename || product.accessoryname %>', '<%= product.clothprice || product.shoeprice || product.accessoryprice %>', '<%= product.files[0] %>', '<%= `${product.seller.Fname} ${product.seller.Lname}` %>', '<%= product.sellerId %>')">
                                                             <i
                                                                 class="fas fa-shopping-cart"></i>
                                                         </a>

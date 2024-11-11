@@ -86,7 +86,7 @@
                                             <div class=" image-details">
                                                 <p>
                                                     <b class="price"><s>N</s><%= product.shoeprice %></b>
-                                                    <!-- <a href="/sellerprofile/<%= product.sellerId %>" class="seller"><%= product.seller %></a> -->
+                                                    <!-- <a href="/sellerprofile/<%= product.sellerId %>" class="seller"><%= `${product.seller.Fname} ${product.seller.Lname}` %></a> -->
                                                 </p>
                                                 <b class="cloth-name"><a href="/cdetails/<%= product._id %>" class="text-light"> <%= product.shoename %></a></b>
                                                 <p class="qttb">
